@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            agent {
+              docker {
+               image 'maven:3-alpine'
+              }
+            }
+            steps {
+			sh '(cd ./SMB/; mvn clean package)'
+		stash name: "app", includes: "**"
+            }
+        }
+    }
+       post {
+        always {
+            echo 'always clean up'
+            deleteDir()
+        }
+    }
+}
