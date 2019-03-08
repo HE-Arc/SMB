@@ -8,8 +8,7 @@ pipeline {
               }
             }
             steps {
-                ls
-			    sh '(cd ./SMB/; mvn clean package)'
+			    sh '(ls; cd ./SMB/; mvn clean package)'
                 stash name: "app", includes: "**"
             }
         }
