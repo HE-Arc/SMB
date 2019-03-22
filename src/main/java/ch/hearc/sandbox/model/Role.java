@@ -18,7 +18,7 @@ public class Role {
 
     public Role(String name) {
         this.name = name;
-        this.customUsers = new HashSet<CustomUser>();
+        this.customUsers = new HashSet<>();
     }
 
     public Role() {

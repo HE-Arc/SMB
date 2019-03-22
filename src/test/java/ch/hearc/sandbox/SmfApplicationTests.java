@@ -11,6 +11,7 @@ public class SmfApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		assert(true);
 	}
 
 }
