@@ -1,0 +1,10 @@
+.navbar-link {
+    color: white;
+    font-weight: 300;
+}
+
+.navbar-link:hover {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}

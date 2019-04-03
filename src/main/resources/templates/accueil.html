@@ -7,7 +7,7 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
 <div class="container mt-5">
-    <table class="table">
+    <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom</th>
@@ -16,9 +16,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="board: ${boards}">
-            <td><a th:href="@{/boards/__${board.id}__}"><span th:text="${board.nom}"/></a></span>
+        <tr th:each="board: ${boards}" th:onclick="'window.location.href=\'/boards/'+ ${board.id} + '\''">
+            <td><span th:text="${board.nom}"/></span></td>
             <td th:text="${board.description}"/>
+            <td><a th:href="@{/boards/__${board.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>
     </table>

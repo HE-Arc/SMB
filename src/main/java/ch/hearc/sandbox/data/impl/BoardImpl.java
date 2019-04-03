@@ -31,6 +31,14 @@ public class BoardImpl {
         return brepo.save(board);
     }
 
+    public void delete(@Valid Board board) {
+        brepo.delete(board);
+    }
+
+    public void delete(Long id) {
+        this.delete(this.find(id));
+    }
+
     public Set<Post> getPosts(@Valid Board board) {
         return board.getPosts();
     }

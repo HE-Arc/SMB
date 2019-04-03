@@ -21,7 +21,7 @@ public class BoardController {
         Board board = boardImpl.find(id);
         model.put("board", board);
         model.put("posts", boardImpl.getPosts(board));
-        return "board";
+        return "board_id";
     }
 
     @GetMapping("/boards/create")
@@ -30,12 +30,23 @@ public class BoardController {
         return "board_create";
     }
 
+    @GetMapping("/boards")
+    public String accueil(Map<String, Object> model) {
+        model.put("boards", boardImpl.findAll());
+        return "accueil";
+    }
+
     @PostMapping("/boards")
     public String createBoard(@Valid @ModelAttribute Board board, BindingResult errors, Model model) {
         if(!errors.hasErrors()) {
             boardImpl.save(board);
         }
         return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId());
+    }
 
+    @GetMapping("/boards/{id}/delete")
+    public String deleteBoard(@PathVariable Long id) {
+        boardImpl.delete(id);
+        return "redirect:/boards";
     }
 }
