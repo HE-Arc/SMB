@@ -34,8 +34,8 @@ public class Board {
 
     public Board() {
         super();
-        this.nom = "Default board";
-        this.description = "Default board";
+        this.nom = "";
+        this.description = "";
     }
 
     public Set<Post> getPosts() {

@@ -7,15 +7,16 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
 <div class="container mt-5">
-    <form method="post" novalidate>
+    <form method="post" action="#" th:action="@{/boards}" novalidate th:object="${board}">
         <div class="form-group">
-            <label for="boardName">Board name</label>
-            <input type="text" class="form-control" id="boardName" aria-describedby="boardHelp" placeholder="Nom du board">
+            <label for="nom">Nom du board</label>
+            <input type="text" class="form-control" id="nom" placeholder="Nom du board" th:field="*{nom}">
         </div>
         <div class="form-group">
-            <label for="boardDescription">Board description</label>
-            <textarea name="boardDescription" id="boardDescription" rows="10"></textarea>
+            <label for="description">Description du board</label>
+            <textarea class="form-control" id="description" rows="10" placeholder="Description du board" th:field="*{description}"></textarea>
         </div>
+        <button type="submit" class="btn btn-primary float-right">Créer</button>
     </form>
 </div>
 

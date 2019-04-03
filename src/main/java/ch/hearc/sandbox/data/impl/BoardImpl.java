@@ -27,8 +27,8 @@ public class BoardImpl {
         return brepo.findById(id).orElse(new Board());
     }
 
-    public void save(@Valid Board board) {
-        brepo.save(board);
+    public Board save(@Valid Board board) {
+        return brepo.save(board);
     }
 
     public Set<Post> getPosts(@Valid Board board) {

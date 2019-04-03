@@ -6,8 +6,8 @@
 
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
-<td th:text="${board.nom}"/>
-<td th:text="${board.description}"/>
+<h1 class="display-3 text-center" th:text="${board.nom}">Default name</h1>
+<h2 th:text="${board.description}">Default description</h2>
 
 <div class="container mt-5">
     <table class="table">
