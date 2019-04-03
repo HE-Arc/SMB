@@ -12,11 +12,12 @@
         <tr>
             <th scope="col">Nom</th>
             <th scope="col">Description</th>
+            <th scope="col"><a class="float-right" href="/boards/create">+</a></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="board: ${boards}">
-            <td><a th:href="@{/produits?id=__${board.id}__}"><span th:text="${board.nom}"/></a></span>
+            <td><a th:href="@{/boards/__${board.id}__}"><span th:text="${board.nom}"/></a></span>
             <td th:text="${board.description}"/>
         </tr>
         </tbody>

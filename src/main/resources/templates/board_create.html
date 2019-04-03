@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: header"/>
+
+<body>
+
+<div th:replace="fragments/fragments.html :: navigation"></div>
+
+<div class="container mt-5">
+    <form method="post" novalidate>
+        <div class="form-group">
+            <label for="boardName">Board name</label>
+            <input type="text" class="form-control" id="boardName" aria-describedby="boardHelp" placeholder="Nom du board">
+        </div>
+        <div class="form-group">
+            <label for="boardDescription">Board description</label>
+            <textarea name="boardDescription" id="boardDescription" rows="10"></textarea>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/fragments.html :: scripts"></div>
+</body>
+</html>
