@@ -6,24 +6,7 @@
 
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
-<div class="container mt-5">
-    <table class="table table-hover">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Description</th>
-            <th scope="col"><a class="float-right" href="/boards/create"><i class="fas fa-plus"></i></a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="board: ${boards}" th:onclick="'window.location.href=\'/boards/'+ ${board.id} + '\''">
-            <td><span th:text="${board.nom}"/></span></td>
-            <td th:text="${board.description}"/>
-            <td><a th:href="@{/boards/__${board.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<h1 class="display-1">Welcome to SMB</h1>
 
 <div th:replace="fragments/fragments.html :: scripts"></div>
 </body>

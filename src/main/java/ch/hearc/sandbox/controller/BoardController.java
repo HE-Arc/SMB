@@ -33,7 +33,7 @@ public class BoardController {
     @GetMapping("/boards")
     public String accueil(Map<String, Object> model) {
         model.put("boards", boardImpl.findAll());
-        return "accueil";
+        return "boards";
     }
 
     @PostMapping("/boards")

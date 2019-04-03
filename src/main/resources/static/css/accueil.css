@@ -1,6 +1,7 @@
 .navbar-link {
     color: white;
     font-weight: 300;
+    margin-right: 10px;
 }
 
 .navbar-link:hover {

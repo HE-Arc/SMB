@@ -14,7 +14,6 @@ public class AccueilController {
 
     @GetMapping("/")
     public String accueil(Map<String, Object> model) {
-        model.put("boards", boardImpl.findAll());
         return "accueil";
     }
 
