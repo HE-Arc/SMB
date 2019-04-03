@@ -12,13 +12,12 @@
 <!-- *************** Fragments navigation *************** -->
 
 <div th:fragment="navigation">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Accueil</a>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">SMB</a>
         <a href="/admin" class="navbar navbar-link">Admin</a>
-        <div class="navbar navbar-link logout" sec:authorize="isAuthenticated()">
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout"/>
-            </form>
+        <div class="ml-auto">
+            <a class="navbar navbar-link" sec:authorize="!isAuthenticated()" href="/login">Connexion</a>
+            <a class="navbar navbar-link" sec:authorize="isAuthenticated()" href="/logout">Déconnexion</a>
         </div>
     </nav>
 </div>
