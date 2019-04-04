@@ -51,7 +51,9 @@ public class PostController {
     @GetMapping("/posts/create")
     public String createPostForm(Map<String, Object> model, @RequestParam Long boardId) {
         Board board = boardImpl.find(boardId);
-        model.put("post", new Post(board));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
+        model.put("post", new Post(board, actualUser));
         return "post_create";
     }
 //

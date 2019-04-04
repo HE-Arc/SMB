@@ -25,8 +25,12 @@ public class CustomUser {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
     public CustomUser() {
         this.comments = new ArrayList<>();
+        this.posts = new ArrayList<>();
     }
 
     public Long getId() {
@@ -75,5 +79,13 @@ public class CustomUser {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }

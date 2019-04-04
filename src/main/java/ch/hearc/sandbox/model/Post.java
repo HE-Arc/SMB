@@ -30,22 +30,29 @@ public class Post {
     @JsonIgnore
     private Board board;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JsonIgnore
+    private CustomUser user;
+
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
-    public Post(String nom, String contenu, Board board) {
+    public Post(String nom, String contenu, Board board, CustomUser user) {
         this.nom = nom;
         this.contenu = contenu;
         this.board = board;
         this.comments = new ArrayList<>();
+        this.user = user;
     }
 
     public Post() {
-        this(new Board());
+        this(new Board(), new CustomUser());
     }
 
-    public Post(Board board) {
-        this("", "", board);
+    public Post(Board board, CustomUser user) {
+        this("", "", board, user);
     }
 
     public List<Comment> getComments() {
@@ -82,5 +89,13 @@ public class Post {
 
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public CustomUser getUser() {
+        return user;
+    }
+
+    public void setUser(CustomUser user) {
+        this.user = user;
     }
 }
