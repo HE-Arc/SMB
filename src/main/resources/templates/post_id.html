@@ -6,9 +6,18 @@
 
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
-<h1 class="display-2" th:text="${post.nom}">Nom par défaut</h1>
-<h2 class="display-4" th:text="${post.contenu}">Contenu par défaut</h2>
+<div class="container border border-secondary rounded my-3" id="post">
+    <h1 class="display-4 text-center" th:text="${post.nom}">Nom par défaut</h1>
+    <div id="contenuPost" class="my-2 border border-secondary rounded">Contenu par défaut</div>
+</div>
 
 <div th:replace="fragments/fragments.html :: scripts"></div>
+<div th:replace="fragments/fragments.html :: scripts_viewer"></div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.getElementById('contenuPost').innerHTML = marked(/*[[${post.contenu}]]*/);
+    /*]]>*/
+</script>
 </body>
 </html>

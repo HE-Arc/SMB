@@ -3,7 +3,9 @@ package ch.hearc.sandbox.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,24 +25,24 @@ public class Board {
     private String description;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private Set<Post> posts;
+    private List<Post> posts;
 
     public Board(String nom, String description) {
         super();
         this.nom = nom;
         this.description = description;
-        this.posts = new HashSet<>();
+        this.posts = new ArrayList<>();
     }
 
     public Board() {
         this("","");
     }
 
-    public Set<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Set<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 
