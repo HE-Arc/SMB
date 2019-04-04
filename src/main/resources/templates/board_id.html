@@ -7,20 +7,21 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
 <h1 class="display-3 text-center" th:text="${board.nom}">Default name</h1>
-<h2 th:text="${board.description}">Default description</h2>
 
-<div class="container mt-5">
+<div class="container mt-3">
     <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom</th>
             <th scope="col">Description</th>
+            <th scope="col"><a class="float-right" th:href="'/posts/create?boardId=' +  ${board.id}"><i class="fas fa-plus"></i></a></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="post: ${posts}">
             <td><a th:href="@{/post?id=__${post.id}__}"><span th:text="${post.nom}"/></a></span>
             <td th:text="${post.contenu}"/>
+            <td><a th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>
     </table>

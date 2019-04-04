@@ -15,29 +15,31 @@ public class Post {
     private Long id;
 
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min = 1, max = 30)
     private String nom;
 
     @NotNull
-    @Size(min=2, max=300)
+    @Size(min = 1, max = 300)
     private String contenu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="board_id", nullable = false)
-    @OnDelete(action= OnDeleteAction.CASCADE)
+    @ManyToOne
+    @JoinColumn(name = "board_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JsonIgnore
     private Board board;
-
-    public Post() {
-        this.nom = "Poste par défaut";
-        this.contenu = "Contenu par défaut";
-        this.board = new Board();
-    }
 
     public Post(String nom, String contenu, Board board) {
         this.nom = nom;
         this.contenu = contenu;
         this.board = board;
+    }
+
+    public Post() {
+        this("", "", new Board());
+    }
+
+    public Post(Board board) {
+        this("", "", board);
     }
 
     public Long getId() {

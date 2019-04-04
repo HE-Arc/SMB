@@ -20,6 +20,7 @@ public class BoardController {
     public String accueil(Map<String, Object> model, @PathVariable Long id) {
         Board board = boardImpl.find(id);
         model.put("board", board);
+        model.put("posts", board.getPosts());
         return "board_id";
     }
 
