@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin").authenticated()
                 .and()
-                .formLogin();
+                .formLogin().loginPage("/login");
     }
 
     @Bean
