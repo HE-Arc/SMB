@@ -9,6 +9,7 @@
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/accueil.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 </head>
 
 <!-- *************** Fragments navigation *************** -->
@@ -42,4 +43,17 @@
 <div th:fragment="scripts">
     <script type="text/javascript" src="/webjars/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</div>
+
+<!-- *************** Fragments scripts mde *************** -->
+<div th:fragment="scripts_mde">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script>
+        var simplemde = new SimpleMDE();
+    </script>
+</div>
+
+<!-- *************** Fragments scripts viewer *************** -->
+<div th:fragment="scripts_viewer">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </div>

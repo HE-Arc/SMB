@@ -13,3 +13,8 @@
 .navbar-brand:hover {
     font-weight: bolder;
 }
+
+#contenuPost {
+    background-color: white;
+}
+body { background: rgba(197, 200, 215, 0.28) !important; }

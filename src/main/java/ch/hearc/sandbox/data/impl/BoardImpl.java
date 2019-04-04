@@ -39,7 +39,7 @@ public class BoardImpl {
         this.delete(this.find(id));
     }
 
-    public Set<Post> getPosts(@Valid Board board) {
+    public List<Post> getPosts(@Valid Board board) {
         return board.getPosts();
     }
 
