@@ -24,17 +24,24 @@ public class Comment {
     @JsonIgnore
     private Post post;
 
-    public Comment(String contenu, Post post) {
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    @OnDelete(action=OnDeleteAction.NO_ACTION)
+    @JsonIgnore
+    private CustomUser user;
+
+    public Comment(String contenu, Post post, CustomUser user) {
         this.contenu = contenu;
         this.post = post;
+        this.user = user;
     }
 
     public Comment() {
-        this(new Post());
+        this(new Post(), new CustomUser());
     }
 
-    public Comment(Post post) {
-        this("", post);
+    public Comment(Post post, CustomUser user) {
+        this("", post, user);
     }
 
     public Long getId() {
@@ -55,5 +62,13 @@ public class Comment {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public CustomUser getUser() {
+        return user;
+    }
+
+    public void setUser(CustomUser user) {
+        this.user = user;
     }
 }
