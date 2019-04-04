@@ -15,18 +15,12 @@ public class CustomUser {
     private String username;
     private String password;
 
+    @Transient
+    private String passwordConfirm;
+
     @ManyToMany
     private Set<Role> roles;
 
-    public CustomUser(String username, String password, Set<Role> roles) {
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-    }
-
-    public CustomUser() {
-        this("Username", "password", new HashSet<Role>());
-    }
 
     public Long getId() {
         return id;
@@ -54,5 +48,17 @@ public class CustomUser {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setRoles(Role role) {
+        this.roles.add(role);
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 }
