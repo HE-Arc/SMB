@@ -1,6 +1,10 @@
 package ch.hearc.sandbox.model;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.Set;
 
 
@@ -24,6 +28,16 @@ public class CustomUser {
     @ManyToMany
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
+     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    public CustomUser() {
+        this.comments = new ArrayList<>();
+        this.posts = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -71,5 +85,21 @@ public class CustomUser {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
