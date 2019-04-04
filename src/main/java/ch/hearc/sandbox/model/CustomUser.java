@@ -1,7 +1,6 @@
 package ch.hearc.sandbox.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -14,6 +13,10 @@ public class CustomUser {
 
     private String username;
     private String password;
+
+
+
+    private String email;
 
     @Transient
     private String passwordConfirm;
@@ -48,6 +51,14 @@ public class CustomUser {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setRoles(Role role) {
