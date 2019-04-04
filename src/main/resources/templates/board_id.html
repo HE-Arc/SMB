@@ -9,7 +9,7 @@
 <h1 class="display-3 text-center" th:text="${board.nom}">Default name</h1>
 
 <div class="container mt-3">
-    <table class="table">
+    <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom</th>
@@ -18,9 +18,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="post: ${posts}">
-            <td><a th:href="@{/post?id=__${post.id}__}"><span th:text="${post.nom}"/></a></span>
-            <td th:text="${post.contenu}"/>
+        <tr th:each="post: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
+            <td th:text="${post.nom}">Default nom</td>
+            <td th:text="${post.contenu}">Default description</td>
             <td><a th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>

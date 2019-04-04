@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: header"/>
+
+<body>
+
+<div th:replace="fragments/fragments.html :: navigation"></div>
+
+<h1 class="display-2" th:text="${post.nom}">Nom par défaut</h1>
+<h2 class="display-4" th:text="${post.contenu}">Contenu par défaut</h2>
+
+<div th:replace="fragments/fragments.html :: scripts"></div>
+</body>
+</html>

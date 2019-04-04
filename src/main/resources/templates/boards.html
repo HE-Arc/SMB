@@ -17,8 +17,8 @@
         </thead>
         <tbody>
         <tr th:each="board: ${boards}" th:onclick="'window.location.href=\'/boards/'+ ${board.id} + '\''">
-            <td><span th:text="${board.nom}"/></span></td>
-            <td th:text="${board.description}"/>
+            <td th:text="${board.nom}">Default nom</td>
+            <td th:text="${board.description}">Default description</td>
             <td><a th:href="@{/boards/__${board.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>

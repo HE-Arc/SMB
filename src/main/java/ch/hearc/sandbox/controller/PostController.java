@@ -21,13 +21,12 @@ public class PostController {
     @Autowired
     BoardImpl boardImpl;
 
-//    @GetMapping("/posts/{id}")
-//    public String accueil(Map<String, Object> model, @PathVariable Long id) {
-//        Board board = postImpl.find(id);
-//        model.put("board", board);
-//        model.put("posts", postImpl.getPosts(board));
-//        return "board_id";
-//    }
+    @GetMapping("/posts/{id}")
+    public String accueil(Map<String, Object> model, @PathVariable Long id) {
+        Post post = postImpl.find(id);
+        model.put("post", post);
+        return "post_id";
+    }
 
     @GetMapping("/posts/create")
     public String createPostForm(Map<String, Object> model, @RequestParam Long boardId) {
@@ -49,10 +48,12 @@ public class PostController {
         }
         return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
     }
-//
-//    @GetMapping("/posts/{id}/delete")
-//    public String deleteBoard(@PathVariable Long id) {
-//        postImpl.delete(id);
-//        return "redirect:/posts";
-//    }
+
+    @GetMapping("/posts/{id}/delete")
+    public String deleteBoard(@PathVariable Long id) {
+        Post post = postImpl.find(id);
+        Long idBoard = post.getBoard().getId();
+        postImpl.delete(post);
+        return "redirect:/boards/" + idBoard;
+    }
 }

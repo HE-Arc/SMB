@@ -3,6 +3,7 @@ package ch.hearc.sandbox.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,8 +29,7 @@ public class Board {
         super();
         this.nom = nom;
         this.description = description;
-//        this.posts = Stream.of(posts).collect(Collectors.toSet());
-//        this.posts.forEach(x -> x.setBoard(this));
+        this.posts = new HashSet<>();
     }
 
     public Board() {
