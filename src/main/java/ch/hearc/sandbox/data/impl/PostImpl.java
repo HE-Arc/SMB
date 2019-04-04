@@ -29,4 +29,12 @@ public class PostImpl {
         prepo.save(post);
     }
 
+    public void delete(@Valid Post post) {
+        prepo.delete(post);
+    }
+
+    public void delete(Long id) {
+        prepo.delete(this.find(id));
+    }
+
 }

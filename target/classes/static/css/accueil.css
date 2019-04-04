@@ -1,0 +1,15 @@
+.navbar-link {
+    color: white;
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+.navbar-link:hover {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    font-weight: bolder;
+}

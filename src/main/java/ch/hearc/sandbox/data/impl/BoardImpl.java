@@ -27,8 +27,16 @@ public class BoardImpl {
         return brepo.findById(id).orElse(new Board());
     }
 
-    public void save(@Valid Board board) {
-        brepo.save(board);
+    public Board save(@Valid Board board) {
+        return brepo.save(board);
+    }
+
+    public void delete(@Valid Board board) {
+        brepo.delete(board);
+    }
+
+    public void delete(Long id) {
+        this.delete(this.find(id));
     }
 
     public Set<Post> getPosts(@Valid Board board) {
