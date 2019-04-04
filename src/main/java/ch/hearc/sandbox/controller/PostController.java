@@ -1,8 +1,10 @@
 package ch.hearc.sandbox.controller;
 
 import ch.hearc.sandbox.data.impl.BoardImpl;
+import ch.hearc.sandbox.data.impl.CommentImpl;
 import ch.hearc.sandbox.data.impl.PostImpl;
 import ch.hearc.sandbox.model.Board;
+import ch.hearc.sandbox.model.Comment;
 import ch.hearc.sandbox.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +23,14 @@ public class PostController {
     @Autowired
     BoardImpl boardImpl;
 
+    @Autowired
+    CommentImpl commentImpl;
+
     @GetMapping("/posts/{id}")
     public String accueil(Map<String, Object> model, @PathVariable Long id) {
         Post post = postImpl.find(id);
         model.put("post", post);
+        model.put("comment", new Comment(post));
         return "post_id";
     }
 

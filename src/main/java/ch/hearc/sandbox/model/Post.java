@@ -7,6 +7,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -28,18 +30,30 @@ public class Post {
     @JsonIgnore
     private Board board;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
     public Post(String nom, String contenu, Board board) {
         this.nom = nom;
         this.contenu = contenu;
         this.board = board;
+        this.comments = new ArrayList<>();
     }
 
     public Post() {
-        this("", "", new Board());
+        this(new Board());
     }
 
     public Post(Board board) {
         this("", "", board);
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Long getId() {

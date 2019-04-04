@@ -9,18 +9,16 @@
 <h1 class="display-3 text-center" th:text="${board.nom}">Default name</h1>
 
 <div class="container mt-3">
-    <table class="table table-hover">
+    <table class="table table-hover border border-secondary rounded">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom</th>
-            <th scope="col">Description</th>
             <th scope="col"><a class="float-right" th:href="'/posts/create?boardId=' +  ${board.id}"><i class="fas fa-plus"></i></a></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="whiteBackground">
         <tr th:each="post: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
             <td th:text="${post.nom}">Default nom</td>
-            <td th:text="${post.contenu}">Default description</td>
             <td><a th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>

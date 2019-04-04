@@ -14,7 +14,25 @@
     font-weight: bolder;
 }
 
-#contenuPost {
-    background-color: white;
+.whiteBackground {
+    background-color: white !important;
 }
-body { background: rgba(197, 200, 215, 0.28) !important; }
+
+.CodeMirror,
+.CodeMirror-scroll {
+    min-height: 100px !important;
+    height: 100px !important;
+    max-height: 100px !important;
+}
+
+.borderCustom {
+    border-color: #ced4da !important;
+}
+
+body {
+    background-color: rgba(200,200,200,0.3);
+}
+
+tr:hover {
+    background-color: rgba(83, 129, 179, 0.65) !important;
+}
