@@ -18,11 +18,11 @@ public class Post {
 
     @NotNull
     @Size(min = 1, max = 30)
-    private String nom;
+    private String name;
 
     @NotNull
     @Size(min = 1, max = 300)
-    private String contenu;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
@@ -39,9 +39,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
-    public Post(String nom, String contenu, Board board, CustomUser user) {
-        this.nom = nom;
-        this.contenu = contenu;
+    public Post(String name, String content, Board board, CustomUser user) {
+        this.name = name;
+        this.content = content;
         this.board = board;
         this.comments = new ArrayList<>();
         this.user = user;
@@ -67,20 +67,20 @@ public class Post {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getContent() {
+        return content;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Board getBoard() {

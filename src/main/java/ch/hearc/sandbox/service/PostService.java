@@ -1,4 +1,4 @@
-package ch.hearc.sandbox.data.impl;
+package ch.hearc.sandbox.service;
 
 import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.repository.PostRepository;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PostImpl {
+public class PostService {
     @Autowired
     private PostRepository prepo;
 

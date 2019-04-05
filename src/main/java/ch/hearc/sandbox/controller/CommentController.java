@@ -1,7 +1,7 @@
 package ch.hearc.sandbox.controller;
 
-import ch.hearc.sandbox.data.impl.CommentImpl;
-import ch.hearc.sandbox.data.impl.PostImpl;
+import ch.hearc.sandbox.service.CommentService;
+import ch.hearc.sandbox.service.PostService;
 import ch.hearc.sandbox.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,24 +17,24 @@ import javax.validation.Valid;
 @Controller
 public class CommentController {
     @Autowired
-    CommentImpl commentImpl;
+    CommentService commentService;
 
     @Autowired
-    PostImpl postImpl;
-
-    @PostMapping("/comments")
-    public String createBoard(@Valid @ModelAttribute Comment comment, BindingResult errors, Model model) {
-        if (!errors.hasErrors()) {
-            commentImpl.save(comment);
-        }
-        return "redirect:posts/" + comment.getPost().getId();
-    }
+    PostService postService;
 
     @GetMapping("/comments/{id}/delete")
-    public String deleteBoard(@PathVariable Long id) {
-        Comment comment = commentImpl.find(id);
+    public String deleteComment(@PathVariable Long id) {
+        Comment comment = commentService.find(id);
         Long idPost = comment.getPost().getId();
-        commentImpl.delete(comment);
+        commentService.delete(comment);
         return "redirect:/posts/" + idPost;
+    }
+
+    @PostMapping("/comments")
+    public String createComments(@Valid @ModelAttribute Comment comment, BindingResult errors, Model model) {
+        if (!errors.hasErrors()) {
+            commentService.save(comment);
+        }
+        return "redirect:posts/" + comment.getPost().getId();
     }
 }

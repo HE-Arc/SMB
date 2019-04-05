@@ -16,7 +16,7 @@ public class Comment {
 
     @NotNull
     @Size(min = 1, max = 300)
-    private String contenu;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
@@ -30,8 +30,8 @@ public class Comment {
     @JsonIgnore
     private CustomUser user;
 
-    public Comment(String contenu, Post post, CustomUser user) {
-        this.contenu = contenu;
+    public Comment(String content, Post post, CustomUser user) {
+        this.content = content;
         this.post = post;
         this.user = user;
     }
@@ -48,12 +48,12 @@ public class Comment {
         return id;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getContent() {
+        return content;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Post getPost() {

@@ -4,11 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Entity
 public class Board {
@@ -18,7 +14,7 @@ public class Board {
 
     @NotNull
     @Size(min = 1, max = 30)
-    private String nom;
+    private String name;
 
     @NotNull
     @Size(min = 1, max = 100)
@@ -27,9 +23,9 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    public Board(String nom, String description) {
+    public Board(String name, String description) {
         super();
-        this.nom = nom;
+        this.name = name;
         this.description = description;
         this.posts = new ArrayList<>();
     }
@@ -47,16 +43,16 @@ public class Board {
     }
 
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -71,7 +67,7 @@ public class Board {
     public String toString() {
         return "Board{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

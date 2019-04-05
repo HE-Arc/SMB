@@ -1,13 +1,12 @@
 package ch.hearc.sandbox.controller;
 
-import ch.hearc.sandbox.data.impl.BoardImpl;
-import ch.hearc.sandbox.data.impl.CommentImpl;
-import ch.hearc.sandbox.data.impl.PostImpl;
+import ch.hearc.sandbox.service.BoardService;
+import ch.hearc.sandbox.service.CommentService;
+import ch.hearc.sandbox.service.PostService;
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.model.Comment;
 import ch.hearc.sandbox.model.CustomUser;
 import ch.hearc.sandbox.model.Post;
-import ch.hearc.sandbox.service.CustomUserDetailsServiceImpl;
 import ch.hearc.sandbox.service.CustomUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,20 +24,20 @@ import java.util.stream.Collectors;
 @Controller
 public class PostController {
     @Autowired
-    PostImpl postImpl;
+    PostService postService;
 
     @Autowired
-    BoardImpl boardImpl;
+    BoardService boardService;
 
     @Autowired
-    CommentImpl commentImpl;
+    CommentService commentService;
 
     @Autowired
     CustomUserServiceImpl customUserDetailsService;
 
     @GetMapping("/posts/{id}")
-    public String accueil(Map<String, Object> model, @PathVariable Long id) {
-        Post post = postImpl.find(id);
+    public String specificPost(Map<String, Object> model, @PathVariable Long id) {
+        Post post = postService.find(id);
         model.put("post", post);
         List<String> customUsers = post.getComments().stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);
@@ -50,26 +49,26 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String createPostForm(Map<String, Object> model, @RequestParam Long boardId) {
-        Board board = boardImpl.find(boardId);
+        Board board = boardService.find(boardId);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
         model.put("post", new Post(board, actualUser));
         return "post_create";
     }
 
-    @PostMapping("/posts")
-    public String createBoard(@Valid @ModelAttribute Post post, BindingResult errors, Model model) {
-        if(!errors.hasErrors()) {
-            postImpl.save(post);
-        }
-        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
+    @GetMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable Long id) {
+        Post post = postService.find(id);
+        Long idBoard = post.getBoard().getId();
+        postService.delete(post);
+        return "redirect:/boards/" + idBoard;
     }
 
-    @GetMapping("/posts/{id}/delete")
-    public String deleteBoard(@PathVariable Long id) {
-        Post post = postImpl.find(id);
-        Long idBoard = post.getBoard().getId();
-        postImpl.delete(post);
-        return "redirect:/boards/" + idBoard;
+    @PostMapping("/posts")
+    public String createPost(@Valid @ModelAttribute Post post, BindingResult errors, Model model) {
+        if (!errors.hasErrors()) {
+            postService.save(post);
+        }
+        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
     }
 }
