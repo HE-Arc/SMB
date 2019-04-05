@@ -3,11 +3,15 @@ package ch.hearc.sandbox.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,6 +27,10 @@ public class Post {
     @NotNull
     @Size(min = 1, max = 300)
     private String content;
+
+    @NotNull
+    @LastModifiedDate
+    private String modifiedDate;
 
     @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
@@ -45,6 +53,7 @@ public class Post {
         this.board = board;
         this.comments = new ArrayList<>();
         this.user = user;
+        this.modifiedDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
     }
 
     public Post() {
@@ -97,5 +106,13 @@ public class Post {
 
     public void setUser(CustomUser user) {
         this.user = user;
+    }
+
+    public String getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }
