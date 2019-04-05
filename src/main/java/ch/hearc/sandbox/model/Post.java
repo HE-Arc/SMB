@@ -3,12 +3,12 @@ package ch.hearc.sandbox.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +32,10 @@ public class Post {
     @LastModifiedDate
     private String modifiedDate;
 
+    @NotNull
+    @CreatedDate
+    private String createdDate;
+
     @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
@@ -53,7 +57,8 @@ public class Post {
         this.board = board;
         this.comments = new ArrayList<>();
         this.user = user;
-        this.modifiedDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+        this.modifiedDate = this.createdDate;
     }
 
     public Post() {
@@ -106,6 +111,14 @@ public class Post {
 
     public void setUser(CustomUser user) {
         this.user = user;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getModifiedDate() {
