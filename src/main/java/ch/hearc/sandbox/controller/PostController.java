@@ -56,13 +56,7 @@ public class PostController {
         model.put("post", new Post(board, actualUser));
         return "post_create";
     }
-//
-//    @GetMapping("/posts")
-//    public String accueil(Map<String, Object> model) {
-//        model.put("posts", postImpl.findAll());
-//        return "posts";
-//    }
-//
+
     @PostMapping("/posts")
     public String createBoard(@Valid @ModelAttribute Post post, BindingResult errors, Model model) {
         if(!errors.hasErrors()) {
