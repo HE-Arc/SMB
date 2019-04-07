@@ -9,6 +9,9 @@ import ch.hearc.sandbox.service.CommentService;
 import ch.hearc.sandbox.service.CustomUserServiceImpl;
 import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,8 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,13 +39,13 @@ public class PostController {
     CustomUserServiceImpl customUserDetailsService;
 
 
-    @GetMapping("/posts/{id}/{pageno}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
+    @GetMapping("/posts/{id}")
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=10, page=0) Pageable pageable) {
 
         Post post = postService.find(id);
         model.put("post", post);
         model.put("postDate", post.getDateDisplay());
-        List<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageno);
+        Page<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageable);
         model.put("comments", comments);
         List<String> commentDates = comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList());
         model.put("commentDates", commentDates);
@@ -79,7 +80,7 @@ public class PostController {
             postService.save(post);
         }
 
-        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId() + "/0");
+        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
 
     }
 }

@@ -7,6 +7,9 @@ import ch.hearc.sandbox.service.BoardService;
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,10 +31,11 @@ public class BoardController {
 
     @Autowired PostService postService;
 
-    @GetMapping("/boards/{id}/{pageno}")
-    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
+    @GetMapping("/boards/{id}")
+    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=5, page=0) Pageable pageable) {
         Board board = boardService.find(id);
-        List<Post> posts = postService.getAllPostByDesc(board.getId(), pageno);
+        Page<Post> posts = postService.getAllPostByDesc(board.getId(), pageable);
+        System.out.println(posts.getTotalPages());
         List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
 
         model.put("board", board);

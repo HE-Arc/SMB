@@ -3,7 +3,9 @@ package ch.hearc.sandbox.service;
 import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -15,18 +17,14 @@ public class PostService {
     @Autowired
     private PostRepository prepo;
 
-    private final static int SIZEPAGE = 5;
-
     public List<Post> findAll() {
         List<Post> posts = new ArrayList<>();
         prepo.findAll().forEach(posts::add);
         return posts;
     }
 
-    public List<Post> getAllPostByDesc(Long boardId, int pageno) {
-        List<Post> posts = new ArrayList<>();
-        prepo.getAllPostsByDesc(PageRequest.of(pageno, SIZEPAGE)).stream().filter(p -> p.getBoard().getId().equals(boardId)).forEach(posts::add);
-        return posts;
+    public Page<Post> getAllPostByDesc(Long boardId, Pageable pageable) {
+        return prepo.findByBoardIdOrderByModifiedDateDesc(boardId,pageable);
     }
 
     public Post find(Long id) {
