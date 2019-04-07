@@ -40,7 +40,7 @@ public class PostController {
 
 
     @GetMapping("/posts/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=10, page=0) Pageable pageable) {
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=5, page=0) Pageable pageable) {
 
         Post post = postService.find(id);
         model.put("post", post);
