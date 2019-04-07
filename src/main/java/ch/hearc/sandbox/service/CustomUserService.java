@@ -10,6 +10,8 @@ public interface CustomUserService {
 
 	CustomUser findByCustomemail(String email);
 
+	CustomUser findByCustomId(long id);
+
 	void createPasswordResetTokenForUser(CustomUser customUser, String token);
 
 	void changeUserPassword(CustomUser user, String password);

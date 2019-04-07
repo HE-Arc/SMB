@@ -8,9 +8,9 @@ import ch.hearc.sandbox.validator.CustomUserValidator;
 import ch.hearc.sandbox.validator.ResetPasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +42,9 @@ public class RegisterController {
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private Environment env;
+
     @GetMapping("/register")
     public String registration(Model model) {
         model.addAttribute("userForm", new CustomUser());
@@ -50,8 +53,9 @@ public class RegisterController {
     }
 
     @GetMapping("/user/updatePassword")
-    public String updatePassword(Model model) {
-        model.addAttribute("pwdForm", new PasswordDto());
+    public String updatePassword(Model model, @RequestParam("id") long id, @RequestParam("token") String token) {
+        model.addAttribute("pwdForm", new PasswordDto(id,token));
+
         return "updatePassword";
     }
 
@@ -61,7 +65,7 @@ public class RegisterController {
         if (error != null)
             model.addAttribute("error", "Your email is invalid.");
         if (ok != null)
-            model.addAttribute("message", "email send");
+            model.addAttribute("message", "email sent");
 
         return "forgotPassword";
     }
@@ -73,16 +77,14 @@ public class RegisterController {
         CustomUser user = customUserService.findByCustomemail(email);
 
         if (user == null) {
-            request.setAttribute("error", "1");
-            return "forgotpassword";
+            return "redirect:/forgotpassword?error";
         }
 
         String token = UUID.randomUUID().toString();
         customUserService.createPasswordResetTokenForUser(user, token);
-        mailSender.send(constructResetTokenEmail(request.getPathInfo(), request.getLocale(), token, user));
+        mailSender.send(constructResetTokenEmail(env.getProperty("spring.application.url"), request.getLocale(), token, user));
 
-        request.setAttribute("ok", "1");
-        return "forgotpassword";
+        return "redirect:/forgotpassword?ok";
     }
 
     @PostMapping("/register")
@@ -106,28 +108,33 @@ public class RegisterController {
                                          @RequestParam("id") long id, @RequestParam("token") String token) {
         String result = securityService.validatePasswordResetToken(id, token);
         if (result != null) {
-            model.addAttribute("message", "link not valid");
-            return "redirect:/login";
+            return "redirect:/login?" + result;
         }
-        return "redirect:/user/updatePassword";
+        return "redirect:/user/updatePassword?id=" + id + "&token=" + token;
     }
 
 
     @RequestMapping(value = "/user/updatePassword", method = RequestMethod.POST)
-    public String registration(HttpServletRequest request,@ModelAttribute("pwdForm") PasswordDto passwordDto, BindingResult bindingResult) {
+    public String registration(HttpServletRequest request, @ModelAttribute("pwdForm") PasswordDto passwordDto, BindingResult bindingResult) {
         resetPasswordValidator.validate(passwordDto, bindingResult);
 
+        String result = securityService.validatePasswordResetToken(passwordDto.getId(), passwordDto.getToken());
+
+        if (result != null) {
+            return "redirect:/";
+        }
+
         if (bindingResult.hasErrors()) {
+
             return "updatePassword";
         }
 
-        CustomUser user =
-                (CustomUser) SecurityContextHolder.getContext()
-                        .getAuthentication().getPrincipal();
+        CustomUser user = customUserService.findByCustomId(passwordDto.getId());
+
 
         customUserService.changeUserPassword(user, passwordDto.getNewPassword());
 
-        return "redirect:/";
+        return "redirect:/login";
 
     }
 

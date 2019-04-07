@@ -14,16 +14,19 @@ public class LoginController {
     private CustomUserService customUserService;
 
 
-
     @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error, String logout, String invalidlink) {
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "login";
+        if (invalidlink != null)
+            model.addAttribute("error", "Invalid link");
+
+
+            return "login";
     }
 
 

@@ -58,4 +58,9 @@ public class CustomUserServiceImpl implements CustomUserService {
         user.setPassword(bCryptPasswordEncoder.encode(password));
         customUserRepository.save(user);
     }
+
+    @Override
+    public CustomUser findByCustomId(long id){
+        return customUserRepository.findById(id).get();
+    }
 }
