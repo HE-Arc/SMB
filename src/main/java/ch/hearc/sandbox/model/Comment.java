@@ -41,7 +41,7 @@ public class Comment {
         this.content = content;
         this.post = post;
         this.user = user;
-        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+        this.createdDate = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date());
         this.post.setModifiedDate(this.createdDate);
     }
 

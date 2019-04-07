@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,6 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin").authenticated()
+                .antMatchers("/boards/create").authenticated()
+                .antMatchers(HttpMethod.POST, "/boards").authenticated()
+                .antMatchers("/boards/{id}/delete").authenticated()
+                .antMatchers("/posts/create").authenticated()
+                .antMatchers(HttpMethod.POST, "/posts").authenticated()
+                .antMatchers("/posts/{id}/delete").authenticated()
+                .antMatchers(HttpMethod.POST, "/comments").authenticated()
+                .antMatchers("/comments/{id}/delete").authenticated()
                 .and()
                 .formLogin().loginPage("/login");
     }

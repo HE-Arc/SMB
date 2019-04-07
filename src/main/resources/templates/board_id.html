@@ -14,14 +14,14 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Last modified</th>
-            <th scope="col"><a class="float-right" th:href="'/posts/create?boardId=' +  ${board.id}"><i class="fas fa-plus"></i></a></th>
+            <th scope="col"><a sec:authorize="isAuthenticated()" class="float-right" th:href="'/posts/create?boardId=' +  ${board.id}"><i class="fas fa-plus"></i></a></th>
         </tr>
         </thead>
         <tbody class="whiteBackground">
-        <tr th:each="post: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
+        <tr th:each="post, iterStat: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
             <td th:text="${post.name}">Default name</td>
-            <td th:text="${post.modifiedDate}">Default date</td>
-            <td><a th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
+            <td th:text="${dates[iterStat.index]}">Default date</td>
+            <td><a sec:authorize="isAuthenticated()" th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>
     </table>

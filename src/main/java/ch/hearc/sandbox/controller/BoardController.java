@@ -1,29 +1,48 @@
 package ch.hearc.sandbox.controller;
 
+import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.service.BoardService;
 import ch.hearc.sandbox.model.Board;
+import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("/boards/{id}")
-    public String specificBoard(Map<String, Object> model, @PathVariable Long id) {
+    @Autowired PostService postService;
+
+    @GetMapping("/boards/{id}/{pageno}")
+    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable(required = false) int pageno) {
         Board board = boardService.find(id);
+        List<Post> posts = postService.getAllPostByBoard(board.getId(), pageno);
+        SimpleDateFormat dfIn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        SimpleDateFormat dfOut = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+        List<String> dates = posts.stream().map(p -> {
+            try {
+                return dfOut.format(dfIn.parse(p.getModifiedDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return ""; //If error in parse date
+        }).collect(Collectors.toList());
         model.put("board", board);
-        model.put("posts", board.getPosts());
+        model.put("posts", posts);
+        model.put("dates", dates);
         return "board_id";
     }
 

@@ -16,7 +16,6 @@ public class CommentService {
     @Autowired
     private CommentRepository crepo;
 
-
     public List<Comment> findAll() {
         List<Comment> comments = new ArrayList<>();
         crepo.findAll().forEach(comments::add);

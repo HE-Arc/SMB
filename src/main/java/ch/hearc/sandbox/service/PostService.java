@@ -3,6 +3,7 @@ package ch.hearc.sandbox.service;
 import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -18,6 +19,12 @@ public class PostService {
     public List<Post> findAll() {
         List<Post> posts = new ArrayList<>();
         prepo.findAll().forEach(posts::add);
+        return posts;
+    }
+
+    public List<Post> getAllPostByBoard(Long boardId, int pageno) {
+        List<Post> posts = new ArrayList<>();
+        prepo.getAllPostsByBoard(PageRequest.of(pageno, 5)).stream().filter(p -> p.getBoard().getId().equals(boardId)).forEach(posts::add);
         return posts;
     }
 

@@ -42,7 +42,6 @@ public class Board {
         this.posts = posts;
     }
 
-
     public String getName() {
         return name;
     }

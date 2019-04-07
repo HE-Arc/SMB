@@ -1,13 +1,13 @@
 package ch.hearc.sandbox.controller;
 
-import ch.hearc.sandbox.service.BoardService;
-import ch.hearc.sandbox.service.CommentService;
-import ch.hearc.sandbox.service.PostService;
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.model.Comment;
 import ch.hearc.sandbox.model.CustomUser;
 import ch.hearc.sandbox.model.Post;
+import ch.hearc.sandbox.service.BoardService;
+import ch.hearc.sandbox.service.CommentService;
 import ch.hearc.sandbox.service.CustomUserServiceImpl;
+import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +38,21 @@ public class PostController {
     CustomUserServiceImpl customUserDetailsService;
 
     @GetMapping("/posts/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id) {
+    public String specificPost(Map<String, Object> model, @PathVariable Long id) throws ParseException {
         Post post = postService.find(id);
         model.put("post", post);
+        SimpleDateFormat dfIn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        SimpleDateFormat dfOut = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+        model.put("postDate", dfOut.format(dfIn.parse(post.getModifiedDate())));
+        List<String> commentDates = post.getComments().stream().map(c -> {
+            try {
+                return dfOut.format(dfIn.parse(c.getCreatedDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return ""; //If error in parse date
+        }).collect(Collectors.toList());
+        model.put("commentDates", commentDates);
         List<String> customUsers = post.getComments().stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
