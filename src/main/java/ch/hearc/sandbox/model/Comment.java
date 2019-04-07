@@ -1,9 +1,11 @@
 package ch.hearc.sandbox.model;
 
+import ch.hearc.sandbox.service.PostService;
 import ch.hearc.sandbox.utils.ManageDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -42,7 +44,6 @@ public class Comment {
         this.post = post;
         this.user = user;
         this.createdDate = ManageDate.dateToDB(new Date());
-        this.post.setModifiedDate(this.createdDate);
     }
 
     public Comment() {

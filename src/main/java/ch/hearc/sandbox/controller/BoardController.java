@@ -5,16 +5,12 @@ import ch.hearc.sandbox.service.BoardService;
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,9 +23,9 @@ public class BoardController {
     @Autowired PostService postService;
 
     @GetMapping("/boards/{id}/{pageno}")
-    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable(required = false) int pageno) {
+    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
         Board board = boardService.find(id);
-        List<Post> posts = postService.getAllPostByBoard(board.getId(), pageno);
+        List<Post> posts = postService.getAllPostByDesc(board.getId(), pageno);
         List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
         model.put("board", board);
         model.put("posts", posts);

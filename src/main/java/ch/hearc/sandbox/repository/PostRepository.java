@@ -8,8 +8,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
-    @Query(getAllPostsByBoard)
-    List<Post> getAllPostsByBoard(Pageable pageable);
+    //Source : https://stackoverflow.com/questions/32434058/how-to-implement-pagination-in-spring-boot-with-hibernate
+    @Query(getAllPostsDesc)
+    List<Post> getAllPostsByDesc(Pageable pageable);
 
-    final String getAllPostsByBoard = "from Post order by modifiedDate DESC";
+    String getAllPostsDesc = "from Post order by modifiedDate DESC";
 }

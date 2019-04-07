@@ -15,6 +15,7 @@ public class PostService {
     @Autowired
     private PostRepository prepo;
 
+    private final static int SIZEPAGE = 5;
 
     public List<Post> findAll() {
         List<Post> posts = new ArrayList<>();
@@ -22,9 +23,9 @@ public class PostService {
         return posts;
     }
 
-    public List<Post> getAllPostByBoard(Long boardId, int pageno) {
+    public List<Post> getAllPostByDesc(Long boardId, int pageno) {
         List<Post> posts = new ArrayList<>();
-        prepo.getAllPostsByBoard(PageRequest.of(pageno, 5)).stream().filter(p -> p.getBoard().getId().equals(boardId)).forEach(posts::add);
+        prepo.getAllPostsByDesc(PageRequest.of(pageno, SIZEPAGE)).stream().filter(p -> p.getBoard().getId().equals(boardId)).forEach(posts::add);
         return posts;
     }
 

@@ -39,7 +39,7 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     document.getElementById('contenuPost').innerHTML = marked(/*[[${post.content}]]*/);
-    const comments = /*[[${post.comments}]]*/
+    const comments = /*[[${comments}]]*/
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
     for (const commentId in comments) {

@@ -37,14 +37,16 @@ public class PostController {
     @Autowired
     CustomUserServiceImpl customUserDetailsService;
 
-    @GetMapping("/posts/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id) throws ParseException {
+    @GetMapping("/posts/{id}/{pageno}")
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
         Post post = postService.find(id);
         model.put("post", post);
         model.put("postDate", post.getDateDisplay());
-        List<String> commentDates = post.getComments().stream().map(Comment::getDateDisplay).collect(Collectors.toList());
+        List<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageno);
+        model.put("comments", comments);
+        List<String> commentDates = comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList());
         model.put("commentDates", commentDates);
-        List<String> customUsers = post.getComments().stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
+        List<String> customUsers = comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
@@ -74,6 +76,6 @@ public class PostController {
         if (!errors.hasErrors()) {
             postService.save(post);
         }
-        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
+        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId() + "/0");
     }
 }

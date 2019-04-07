@@ -1,5 +1,6 @@
 package ch.hearc.sandbox.controller;
 
+import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.service.CommentService;
 import ch.hearc.sandbox.service.PostService;
 import ch.hearc.sandbox.model.Comment;
@@ -34,7 +35,10 @@ public class CommentController {
     public String createComments(@Valid @ModelAttribute Comment comment, BindingResult errors, Model model) {
         if (!errors.hasErrors()) {
             commentService.save(comment);
+            Post post = comment.getPost();
+            post.setModifiedDate(comment.getCreatedDate());
+            postService.save(post);
         }
-        return "redirect:posts/" + comment.getPost().getId();
+        return "redirect:posts/" + comment.getPost().getId() + "/0";
     }
 }
