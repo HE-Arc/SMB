@@ -38,26 +38,24 @@
 <div th:replace="fragments/fragments.html :: scripts_viewer"></div>
 <div th:replace="fragments/fragments.html :: scripts_mde"></div>
 
+<script>
+    function addComment(comments, users, commentDates) {
+        for (const commentId in comments) {
+            $('#comment').append(`<div class="border borderCustom rounded p-2 my-2"><div>${marked(comments[commentId].content)}</div>
+            <div class="text-right mr-3"><small>Answered by ${users[commentId]} the ${commentDates[commentId]}</small></div></div>`)
+            //Source : https://stackoverflow.com/questions/867916/creating-a-div-element-in-jquery
+        }
+    }
+</script>
+
 <script th:inline="javascript">
     /*<![CDATA[*/
     document.getElementById('contenuPost').innerHTML = marked(/*[[${post.content}]]*/);
-<<<<<<< HEAD
-    const comments = /*[[${post.comments}]]*/
-=======
-    const comments = /*[[${comments}]]*/
->>>>>>> 1e389235f4cbf28c2d88d492b5c48b6595d7afae
+    let comments = /*[[${comments}]]*/
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
-    for (const commentId in comments) {
-<<<<<<< HEAD
-        $('#commentaires').append(`<div class="border borderCustom rounded p-2 my-2"><div>${marked(comments[commentId].content)}</div>
-            <div class="text-right mr-3"><small>Answered by ${users[commentId]} the ${comments[commentId].createdDate}</small></div></div>`)
-=======
-        $('#comment').append(`<div class="border borderCustom rounded p-2 my-2"><div>${marked(comments[commentId].content)}</div>
-            <div class="text-right mr-3"><small>Answered by ${users[commentId]} the ${commentDates[commentId]}</small></div></div>`)
->>>>>>> 1e389235f4cbf28c2d88d492b5c48b6595d7afae
-        //Source : https://stackoverflow.com/questions/867916/creating-a-div-element-in-jquery
-    }
+        comments = comments.content
+    addComment(comments, users, commentDates)
     /*]]>*/
 </script>
 </body>

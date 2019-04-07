@@ -41,7 +41,7 @@ public class CommentController {
             post.setModifiedDate(comment.getCreatedDate());
             postService.save(post);
         }
-        return "redirect:posts/" + comment.getPost().getId() + "/0";
+        return "redirect:posts/" + comment.getPost().getId();
 
     }
 }

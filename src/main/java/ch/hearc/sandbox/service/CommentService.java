@@ -5,7 +5,9 @@ import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.repository.CommentRepository;
 import ch.hearc.sandbox.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -25,10 +27,8 @@ public class CommentService {
         return comments;
     }
 
-    public List<Comment> getAllPostByDesc(Long postId, int pageno) {
-        List<Comment> comments = new ArrayList<>();
-        crepo.getAllCommentsDesc(PageRequest.of(pageno, SIZEPAGE)).stream().filter(c -> c.getPost().getId().equals(postId)).forEach(comments::add);
-        return comments;
+    public Page<Comment> getAllPostByDesc(Long postId, Pageable pageable) {
+        return crepo.findByPostIdOrderByCreatedDateDesc(postId, pageable);
     }
 
     public Comment find(Long id) {
