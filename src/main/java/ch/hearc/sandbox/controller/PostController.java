@@ -41,17 +41,8 @@ public class PostController {
     public String specificPost(Map<String, Object> model, @PathVariable Long id) throws ParseException {
         Post post = postService.find(id);
         model.put("post", post);
-        SimpleDateFormat dfIn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        SimpleDateFormat dfOut = new SimpleDateFormat("dd MMMM yyyy HH:mm");
-        model.put("postDate", dfOut.format(dfIn.parse(post.getModifiedDate())));
-        List<String> commentDates = post.getComments().stream().map(c -> {
-            try {
-                return dfOut.format(dfIn.parse(c.getCreatedDate()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return ""; //If error in parse date
-        }).collect(Collectors.toList());
+        model.put("postDate", post.getDateDisplay());
+        List<String> commentDates = post.getComments().stream().map(Comment::getDateDisplay).collect(Collectors.toList());
         model.put("commentDates", commentDates);
         List<String> customUsers = post.getComments().stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);

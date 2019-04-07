@@ -30,16 +30,7 @@ public class BoardController {
     public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable(required = false) int pageno) {
         Board board = boardService.find(id);
         List<Post> posts = postService.getAllPostByBoard(board.getId(), pageno);
-        SimpleDateFormat dfIn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        SimpleDateFormat dfOut = new SimpleDateFormat("dd MMMM yyyy HH:mm");
-        List<String> dates = posts.stream().map(p -> {
-            try {
-                return dfOut.format(dfIn.parse(p.getModifiedDate()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return ""; //If error in parse date
-        }).collect(Collectors.toList());
+        List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
         model.put("board", board);
         model.put("posts", posts);
         model.put("dates", dates);
@@ -69,6 +60,6 @@ public class BoardController {
         if (!errors.hasErrors()) {
             boardService.save(board);
         }
-        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId());
+        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId() + "/0");
     }
 }
