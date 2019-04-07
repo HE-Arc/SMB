@@ -1,14 +1,21 @@
 package ch.hearc.sandbox.model;
 
+import ch.hearc.sandbox.service.PostService;
+import ch.hearc.sandbox.utils.ManageDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+
+
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 @Entity
@@ -41,8 +48,9 @@ public class Comment {
         this.content = content;
         this.post = post;
         this.user = user;
-        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
-        this.post.setModifiedDate(this.createdDate);
+
+        this.createdDate = ManageDate.dateToDB(new Date());
+
     }
 
     public Comment() {
@@ -88,4 +96,10 @@ public class Comment {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
+
+
+    public String getDateDisplay() {
+        return ManageDate.dateFromDBToDisplay(createdDate);
+    }
+
 }

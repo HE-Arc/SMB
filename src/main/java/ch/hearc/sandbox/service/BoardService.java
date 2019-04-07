@@ -3,7 +3,9 @@ package ch.hearc.sandbox.service;
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.model.Post;
 import ch.hearc.sandbox.repository.BoardRepository;
+import ch.hearc.sandbox.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -15,7 +17,6 @@ import java.util.Set;
 public class BoardService {
     @Autowired
     private BoardRepository brepo;
-
 
     public List<Board> findAll() {
         List<Board> boards = new ArrayList<>();

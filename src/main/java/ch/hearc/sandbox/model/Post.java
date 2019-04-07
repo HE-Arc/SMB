@@ -1,5 +1,6 @@
 package ch.hearc.sandbox.model;
 
+import ch.hearc.sandbox.utils.ManageDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -9,7 +10,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,13 +51,16 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+
     public Post(String name, String content, Board board, CustomUser user) {
         this.name = name;
         this.content = content;
         this.board = board;
         this.comments = new ArrayList<>();
         this.user = user;
-        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+
+        this.createdDate = ManageDate.dateToDB(new Date());
+
         this.modifiedDate = this.createdDate;
     }
 
@@ -128,4 +131,10 @@ public class Post {
     public void setModifiedDate(String modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+
+    public String getDateDisplay() {
+        return ManageDate.dateFromDBToDisplay(modifiedDate);
+    }
+
 }

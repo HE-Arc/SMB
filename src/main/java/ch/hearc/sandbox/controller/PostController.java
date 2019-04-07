@@ -17,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,11 +37,18 @@ public class PostController {
     @Autowired
     CustomUserServiceImpl customUserDetailsService;
 
-    @GetMapping("/posts/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id) {
+
+    @GetMapping("/posts/{id}/{pageno}")
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
+
         Post post = postService.find(id);
         model.put("post", post);
-        List<String> customUsers = post.getComments().stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
+        model.put("postDate", post.getDateDisplay());
+        List<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageno);
+        model.put("comments", comments);
+        List<String> commentDates = comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList());
+        model.put("commentDates", commentDates);
+        List<String> customUsers = comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
@@ -69,6 +78,8 @@ public class PostController {
         if (!errors.hasErrors()) {
             postService.save(post);
         }
-        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId());
+
+        return ((errors.hasErrors()) ? "post_create" : "redirect:posts/" + post.getId() + "/0");
+
     }
 }

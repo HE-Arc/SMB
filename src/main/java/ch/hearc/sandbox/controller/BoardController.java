@@ -1,7 +1,11 @@
 package ch.hearc.sandbox.controller;
 
+
+import ch.hearc.sandbox.model.Post;
+
 import ch.hearc.sandbox.service.BoardService;
 import ch.hearc.sandbox.model.Board;
+import ch.hearc.sandbox.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,18 +16,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("/boards/{id}")
-    public String specificBoard(Map<String, Object> model, @PathVariable Long id) {
+
+    @Autowired PostService postService;
+
+    @GetMapping("/boards/{id}/{pageno}")
+    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable int pageno) {
         Board board = boardService.find(id);
+        List<Post> posts = postService.getAllPostByDesc(board.getId(), pageno);
+        List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
+
         model.put("board", board);
-        model.put("posts", board.getPosts());
+        model.put("posts", posts);
+        model.put("dates", dates);
         return "board_id";
     }
 
@@ -50,6 +63,8 @@ public class BoardController {
         if (!errors.hasErrors()) {
             boardService.save(board);
         }
-        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId());
+
+        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId() + "/0");
+
     }
 }
