@@ -1,8 +1,10 @@
 package ch.hearc.sandbox.service;
 
 import ch.hearc.sandbox.model.CustomUser;
+import ch.hearc.sandbox.model.PasswordResetToken;
 import ch.hearc.sandbox.model.Role;
 import ch.hearc.sandbox.repository.CustomUserRepository;
+import ch.hearc.sandbox.repository.PasswordResetTokenRepository;
 import ch.hearc.sandbox.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +22,9 @@ public class CustomUserServiceImpl implements CustomUserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private PasswordResetTokenRepository passwordResetTokenRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -42,5 +47,15 @@ public class CustomUserServiceImpl implements CustomUserService {
         return customUserRepository.findByEmail(email);
     }
 
-    ;
+    @Override
+    public void createPasswordResetTokenForUser(CustomUser customUser, String token){
+        PasswordResetToken myToken = new PasswordResetToken(token,customUser);
+        passwordResetTokenRepository.save(myToken);
+    }
+
+    @Override
+    public void changeUserPassword(CustomUser user, String password) {
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        customUserRepository.save(user);
+    }
 }

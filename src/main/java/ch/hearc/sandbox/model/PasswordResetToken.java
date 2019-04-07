@@ -1,6 +1,7 @@
 package ch.hearc.sandbox.model;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -16,7 +17,31 @@ public class PasswordResetToken {
     @JoinColumn(nullable = false, name = "user_id")
     private CustomUser user;
 
+    private String token;
+
     private Date expiryDate;
+
+
+    public PasswordResetToken() {
+
+    }
+
+    public PasswordResetToken(final String token) {
+
+
+        this.token = token;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+    public PasswordResetToken(final String token, final CustomUser user) {
+
+
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+
 
     public Long getId() {
         return id;
@@ -50,7 +75,12 @@ public class PasswordResetToken {
         this.expiryDate = expiryDate;
     }
 
-    private String token;
 
+    private Date calculateExpiryDate(final int expiryTimeInMinutes) {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(new Date().getTime());
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
+    }
 
 }

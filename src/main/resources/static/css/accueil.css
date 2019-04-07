@@ -18,11 +18,10 @@
     background-color: white !important;
 }
 
-.CodeMirror,
-.CodeMirror-scroll {
-    min-height: 100px !important;
-    height: 100px !important;
-    max-height: 100px !important;
+#contentContainer .CodeMirror,
+ #contentContainer .CodeMirror .CodeMirror-scroll {
+    min-height: 100px;
+    height: auto;
 }
 
 .borderCustom {

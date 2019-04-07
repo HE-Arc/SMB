@@ -1,4 +1,4 @@
-package ch.hearc.sandbox.data.impl;
+package ch.hearc.sandbox.service;
 
 import ch.hearc.sandbox.model.Comment;
 import ch.hearc.sandbox.model.Post;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CommentImpl {
+public class CommentService {
     @Autowired
     private CommentRepository crepo;
 

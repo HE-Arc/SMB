@@ -1,4 +1,4 @@
-package ch.hearc.sandbox.data.impl;
+package ch.hearc.sandbox.service;
 
 import ch.hearc.sandbox.model.Board;
 import ch.hearc.sandbox.model.Post;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Component
-public class BoardImpl {
+public class BoardService {
     @Autowired
     private BoardRepository brepo;
 

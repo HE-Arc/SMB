@@ -9,14 +9,14 @@
 <div class="container mt-5">
     <form method="post" action="#" th:action="@{/boards}" novalidate th:object="${board}">
         <div class="form-group">
-            <label for="nom">Nom du board</label>
-            <input type="text" class="form-control" id="nom" placeholder="Nom du board" th:field="*{nom}">
+            <label for="name">Board name</label>
+            <input type="text" class="form-control" id="name" placeholder="Board name" th:field="*{name}">
         </div>
         <div class="form-group">
-            <label for="description">Description du board</label>
-            <textarea class="form-control" id="description" rows="10" placeholder="Description du board" th:field="*{description}"></textarea>
+            <label for="description">Board description</label>
+            <textarea class="form-control" id="description" rows="10" placeholder="Board description" th:field="*{description}"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary float-right">Créer</button>
+        <button type="submit" class="btn btn-primary float-right">Create</button>
     </form>
 </div>
 

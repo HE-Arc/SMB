@@ -1,6 +1,6 @@
 package ch.hearc.sandbox.controller;
 
-import ch.hearc.sandbox.data.impl.BoardImpl;
+import ch.hearc.sandbox.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
 @Controller
-public class AccueilController {
+public class HomeController {
     @Autowired
-    BoardImpl boardImpl;
+    BoardService boardService;
 
     @GetMapping("/")
     public String accueil(Map<String, Object> model) {

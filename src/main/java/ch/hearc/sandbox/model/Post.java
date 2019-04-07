@@ -3,11 +3,15 @@ package ch.hearc.sandbox.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,11 +22,19 @@ public class Post {
 
     @NotNull
     @Size(min = 1, max = 30)
-    private String nom;
+    private String name;
 
     @NotNull
     @Size(min = 1, max = 300)
-    private String contenu;
+    private String content;
+
+    @NotNull
+    @LastModifiedDate
+    private String modifiedDate;
+
+    @NotNull
+    @CreatedDate
+    private String createdDate;
 
     @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
@@ -39,12 +51,14 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
-    public Post(String nom, String contenu, Board board, CustomUser user) {
-        this.nom = nom;
-        this.contenu = contenu;
+    public Post(String name, String content, Board board, CustomUser user) {
+        this.name = name;
+        this.content = content;
         this.board = board;
         this.comments = new ArrayList<>();
         this.user = user;
+        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+        this.modifiedDate = this.createdDate;
     }
 
     public Post() {
@@ -67,20 +81,20 @@ public class Post {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getContent() {
+        return content;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Board getBoard() {
@@ -97,5 +111,21 @@ public class Post {
 
     public void setUser(CustomUser user) {
         this.user = user;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }

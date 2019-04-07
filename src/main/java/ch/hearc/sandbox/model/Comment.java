@@ -3,10 +3,13 @@ package ch.hearc.sandbox.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 public class Comment {
@@ -16,7 +19,11 @@ public class Comment {
 
     @NotNull
     @Size(min = 1, max = 300)
-    private String contenu;
+    private String content;
+
+    @NotNull
+    @CreatedDate
+    private String createdDate;
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
@@ -30,10 +37,12 @@ public class Comment {
     @JsonIgnore
     private CustomUser user;
 
-    public Comment(String contenu, Post post, CustomUser user) {
-        this.contenu = contenu;
+    public Comment(String content, Post post, CustomUser user) {
+        this.content = content;
         this.post = post;
         this.user = user;
+        this.createdDate = new SimpleDateFormat("dd MMMM yyyy HH:mm").format(new Date());
+        this.post.setModifiedDate(this.createdDate);
     }
 
     public Comment() {
@@ -48,12 +57,12 @@ public class Comment {
         return id;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getContent() {
+        return content;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Post getPost() {
@@ -70,5 +79,13 @@ public class Comment {
 
     public void setUser(CustomUser user) {
         this.user = user;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }
