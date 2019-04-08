@@ -17,6 +17,7 @@
             <label for="description">Board description</label>
             <textarea class="form-control" id="description" rows="10" placeholder="Board description" th:field="*{description}"></textarea>
         </div>
+        <p th:text="${#fields.errors('name')}"></p>
         <button type="submit" class="btn btn-primary float-right">Save</button>
     </form>
 </div>

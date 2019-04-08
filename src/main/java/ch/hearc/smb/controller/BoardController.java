@@ -7,12 +7,14 @@ import ch.hearc.smb.service.BoardService;
 import ch.hearc.smb.model.Board;
 import ch.hearc.smb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,12 +83,11 @@ public class BoardController {
     }
 
     @PostMapping("")
-    public String createBoard(Board board, BindingResult errors) {
-        System.out.println(board.getId());
-        if (!errors.hasErrors()) {
-            boardService.save(board);
+    public String createBoard(@ModelAttribute("board") @Validated Board board, BindingResult errors) {
+        if (errors.hasErrors()) {
+            return "board_form";
         }
-
-        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId());
+        boardService.save(board);
+        return "redirect:boards/" + board.getId();
     }
 }
