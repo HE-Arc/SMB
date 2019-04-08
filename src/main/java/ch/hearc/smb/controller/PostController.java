@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/posts")
+@RequestMapping("/postst2")
 public class PostController {
     @Autowired
     PostService postService;
@@ -64,13 +64,13 @@ public class PostController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
         model.put("post", new Post(board, actualUser));
-        return "post_create";
+        return "post_form";
     }
 
     @GetMapping("/{id}/edit")
     public String editPost(Model model, @PathVariable Long id) {
         model.addAttribute("post", postService.find(id));
-        return "post_create";
+        return "post_form";
     }
 
     @GetMapping("/{id}/delete")
