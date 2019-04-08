@@ -26,6 +26,10 @@ public class PostService {
         return prepo.findByBoardIdOrderByModifiedDateDesc(boardId,pageable);
     }
 
+    public Page<Post> findByName(Long boardId, String name, Pageable pageable) {
+        return prepo.findTop5ByBoardIdAndNameContainingOrderByModifiedDateDesc(boardId, name, pageable);
+    }
+
     public Post find(Long id) {
         return prepo.findById(id).orElse(new Post());
     }
@@ -41,6 +45,4 @@ public class PostService {
     public void delete(Long id) {
         prepo.delete(this.find(id));
     }
-
-
 }

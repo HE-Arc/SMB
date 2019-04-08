@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface PostRepository extends CrudRepository<Post, Long> {
     Page<Post> findByBoardIdOrderByModifiedDateDesc(Long boardId, Pageable pageable);
+    Page<Post> findTop5ByBoardIdAndNameContainingOrderByModifiedDateDesc(Long boardId, String name, Pageable pageable);
 }

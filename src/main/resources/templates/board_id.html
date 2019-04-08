@@ -9,6 +9,13 @@
 <h1 class="display-3 text-center" th:text="${board.name}">Default name</h1>
 
 <div class="container mt-3">
+<!--    source : https://stackoverflow.com/questions/10520899/form-action-with-javascript/34467977-->
+    <form class="form-inline mb-3" action="javascript:;" onsubmit="window.location.href=`/boards/3/search/${$('#searchContent').val()}`">
+        <div class="form-group ml-auto mr-2">
+            <input type="text" class="form-control" id="searchContent" placeholder="Search" th:value="${searchContent}">
+        </div>
+        <button type="submit" class="mr-auto btn btn-primary">Search</button>
+    </form>
     <table class="table table-hover border border-secondary rounded">
         <thead class="thead-dark">
         <tr>
@@ -29,10 +36,10 @@
         </tbody>
     </table>
     <div class="row">
-        <div class="ml-auto col-auto text-center"><a th:class="${posts.number != 0} ? '' : 'disabled'" th:href="@{/boards/__${board.id}__?page=__${0}__}"><i class="pageChanger fas fa-angle-double-left"></i></a></div>
-        <div class="col-auto text-center"><a th:class="${posts.number > 0} ? '' : 'disabled'" th:href="@{/boards/__${board.id}__?page=__${posts.number - 1}__}"><i class="pageChanger fas fa-angle-left"></i></a></div>
-        <div class="col-auto text-center"><a th:class="${posts.number < posts.totalPages -1 } ? '' : 'disabled'" th:href="@{/boards/__${board.id}__?page=__${posts.number + 1}__}"><i class="pageChanger fas fa-angle-right"></i></a></div>
-        <div class="mr-auto col-auto text-center"><a th:class="${posts.number != posts.totalPages - 1} ? '' : 'disabled'" th:href="@{/boards/__${board.id}__?page=__${posts.totalPages - 1}__}"><i class="pageChanger fas fa-angle-double-right"></i></a></div>
+        <div class="ml-auto col-auto text-center"><a th:class="${posts.number != 0} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${0}__}"><i class="pageChanger fas fa-angle-double-left"></i></a></div>
+        <div class="col-auto text-center"><a th:class="${posts.number > 0} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.number - 1}__}"><i class="pageChanger fas fa-angle-left"></i></a></div>
+        <div class="col-auto text-center"><a th:class="${posts.number < posts.totalPages -1 } ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.number + 1}__}"><i class="pageChanger fas fa-angle-right"></i></a></div>
+        <div class="mr-auto col-auto text-center"><a th:class="${posts.number != posts.totalPages - 1} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.totalPages - 1}__}"><i class="pageChanger fas fa-angle-double-right"></i></a></div>
     </div>
 </div>
 

@@ -137,4 +137,8 @@ public class Post {
         return ManageDate.dateFromDBToDisplay(modifiedDate);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
