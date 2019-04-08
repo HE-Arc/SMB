@@ -7,7 +7,7 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
 <div class="container mt-5">
-    <form method="post" action="#" th:action="@{/posts}" th:object="${post}">
+    <form method="post" th:action="@{/posts}" th:object="${post}">
         <div class="form-group">
             <label for="name">Post name</label>
             <input type="text" class="form-control" id="name" placeholder="Nom du post" th:field="*{name}">
@@ -16,9 +16,10 @@
             <label for="content">Post content</label>
             <textarea class="form-control" id="content" th:field="*{content}"></textarea>
         </div>
-        <input type="hidden" id="board" th:field="*{board}">
-        <input type="hidden" id="user" th:field="*{user}">
-        <input type="hidden" id="modifiedDate" th:field="*{modifiedDate}">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{board}">
+        <input type="hidden" th:field="*{user}">
+        <input type="hidden" th:field="*{modifiedDate}">
         <button type="submit" class="btn btn-primary float-right">Post</button>
     </form>
 </div>
