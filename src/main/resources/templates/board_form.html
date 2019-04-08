@@ -7,7 +7,8 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 
 <div class="container mt-5">
-    <form method="post" action="#" th:action="@{/boards}" novalidate th:object="${board}">
+    <form method="post" th:action="@{/boards}" th:object="${board}">
+        <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="name">Board name</label>
             <input type="text" class="form-control" id="name" placeholder="Board name" th:field="*{name}">
@@ -16,7 +17,7 @@
             <label for="description">Board description</label>
             <textarea class="form-control" id="description" rows="10" placeholder="Board description" th:field="*{description}"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary float-right">Create</button>
+        <button type="submit" class="btn btn-primary float-right">Save</button>
     </form>
 </div>
 

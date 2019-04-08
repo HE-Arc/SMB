@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -59,7 +58,14 @@ public class BoardController {
     @GetMapping("/create")
     public String createBoardForm(Map<String, Object> model) {
         model.put("board", new Board());
-        return "board_create";
+        return "board_form";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String modifyBoardForm(Model model, @PathVariable Long id) {
+        System.out.println(boardService.find(id).getId());
+        model.addAttribute("board", boardService.find(id));
+        return "board_form";
     }
 
     @GetMapping("")
@@ -75,12 +81,12 @@ public class BoardController {
     }
 
     @PostMapping("")
-    public String createBoard(@Valid @ModelAttribute Board board, BindingResult errors, Model model) {
+    public String createBoard(Board board, BindingResult errors) {
+        System.out.println(board.getId());
         if (!errors.hasErrors()) {
             boardService.save(board);
         }
 
-        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId() + "/0");
-
+        return ((errors.hasErrors()) ? "board_create" : "redirect:boards/" + board.getId());
     }
 }

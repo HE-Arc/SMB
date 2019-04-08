@@ -21,7 +21,10 @@
 
             <td th:text="${board.name}">Default name</td>
             <td th:text="${board.description}">Default description</td>
-            <td><a sec:authorize="isAuthenticated()" th:href="@{/boards/__${board.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
+            <td class="text-right">
+                <a sec:authorize="isAuthenticated()" th:href="@{/boards/__${board.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/boards/__${board.id}__/delete}" class="text-danger"><i class="fas fa-trash"></i></a>
+            </td>
         </tr>
         </tbody>
     </table>

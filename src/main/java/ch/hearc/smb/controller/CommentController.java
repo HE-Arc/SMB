@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping("/comments")
 public class CommentController {
     @Autowired
     CommentService commentService;
@@ -26,7 +27,7 @@ public class CommentController {
     @Autowired
     PostService postService;
 
-    @GetMapping("/comments/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteComment(@PathVariable Long id) {
         Comment comment = commentService.find(id);
         Long idPost = comment.getPost().getId();
@@ -34,16 +35,16 @@ public class CommentController {
         return "redirect:/posts/" + idPost;
     }
 
-    @GetMapping(value="/comments/{boardid}", produces = "application/json")
+    @GetMapping(value="/{boardid}", produces = "application/json")
     public @ResponseBody Page<Comment> getComments(@PathVariable Long boardid, @PageableDefault(value=5, page=0)Pageable pageable) {
         return commentService.getAllPostByDesc(boardid, pageable);
     }
 
-    @PostMapping("/comments")
+    @PostMapping("")
     public String createComments(@Valid @ModelAttribute Comment comment, BindingResult errors, Model model) {
         if (!errors.hasErrors()) {
             commentService.save(comment);
-    Post post = comment.getPost();
+            Post post = comment.getPost();
             post.setModifiedDate(comment.getCreatedDate());
             postService.save(post);
         }
