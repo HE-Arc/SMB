@@ -29,6 +29,7 @@
         <div class="mt-3" id="comment">
             <!--        Content injected from javascript            -->
         </div>
+        <div><button class="btn btn-secondary mx-auto" onclick="loadComment()">Show more</button></div>
     </div>
 
 
@@ -51,11 +52,10 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     document.getElementById('contenuPost').innerHTML = marked(/*[[${post.content}]]*/);
-    let comments = /*[[${comments}]]*/
+    const comments = /*[[${comments}]]*/
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
-        comments = comments.content
-    addComment(comments, users, commentDates)
+    addComment(comments.content, users, commentDates)
     /*]]>*/
 </script>
 </body>
