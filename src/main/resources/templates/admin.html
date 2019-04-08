@@ -7,6 +7,13 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 <h1 class="display-3 text-center">Search User</h1>
 <div class="container mt-3">
+    <div th:if="${roleUpdate != null} " class="row">
+        <div class="col-12">
+            <div class="alert alert-success" th:text="${roleUpdate}" role="alert">
+                Role updated.
+            </div>
+        </div>
+    </div>
     <form method="POST" class="form-inline mb-3" action="#" th:action="@{/admin}">
         <div class="form-group ml-auto mr-2">
             <input name="username" type="text" class="form-control" id="searchContent" placeholder="Search" required>
