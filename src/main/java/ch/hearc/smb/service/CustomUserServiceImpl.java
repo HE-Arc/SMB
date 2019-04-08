@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Service
@@ -62,5 +63,11 @@ public class CustomUserServiceImpl implements CustomUserService {
     @Override
     public CustomUser findByCustomId(long id){
         return customUserRepository.findById(id).get();
+    }
+
+    @Override
+    public List<CustomUser> findByUsernameContaining(String username)
+    {
+        return customUserRepository.findByUsernameContaining(username);
     }
 }
