@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/postst2")
+@RequestMapping("/posts")
 public class PostController {
     @Autowired
     PostService postService;
