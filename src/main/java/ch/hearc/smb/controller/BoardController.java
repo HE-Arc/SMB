@@ -86,7 +86,7 @@ public class BoardController {
 
     @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @PostMapping("")
-    public String createBoard(@ModelAttribute("board") @Validated Board board, BindingResult errors) {
+    public String createBoard(@ModelAttribute @Validated Board board, BindingResult errors) {
         if (errors.hasErrors()) {
             return "board_form";
         }
