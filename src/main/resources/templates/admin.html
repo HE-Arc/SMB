@@ -9,18 +9,21 @@
 <div class="container mt-3">
     <div th:if="${roleUpdate != null} " class="row">
         <div class="col-12">
-            <div class="alert alert-success" th:text="${roleUpdate}" role="alert">
-                Role updated.
+            <div class="alert alert-success alert-dismissible fade show"  role="alert">
+               <span th:text="${roleUpdate}">Role updated</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
     </div>
-    <form method="POST" class="form-inline mb-3" action="#" th:action="@{/admin}">
+    <form method="GET" class="form-inline mb-3" action="#" th:action="@{/admin}">
         <div class="form-group ml-auto mr-2">
-            <input name="username" type="text" class="form-control" id="searchContent" placeholder="Search" required>
+            <input name="search" type="text" class="form-control" id="searchContent" placeholder="Search" required>
         </div>
         <button type="submit" class="mr-auto btn btn-primary">Search</button>
     </form>
-    <table th:if="${usernames != null}" class="table table-hover border border-secondary rounded">
+    <table th:if="${usernames != null}" class="table border border-secondary rounded">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Username</th>
@@ -32,17 +35,20 @@
         <tbody class="whiteBackground">
         <tr th:each="username : ${usernames}">
             <td th:text="${username.username}">Default name</td>
-            <td><form class="float-right text-danger form-inline" th:method="put"  action="#" th:action="@{/admin/changerole/{id}/(id=${username.id})}">
-                <label class="form-check-label mx-3" for="admin">Administrator</label>
-                <input class="form-check-input" type="checkbox" th:checked="${#sets.contains(username.roles,roleAdmin)}" name="admin" id="admin">
+            <td><form class="float-right text-danger form-inline" th:method="put"  action="#" th:action="@{/admin/changerole/{id}/{search}/(id=${username.id},search=${search})}">
 
-                <label class="form-check-label mx-3" for="modo">Moderator</label>
+                <input class="form-check-input" type="checkbox" th:checked="${#sets.contains(username.roles,roleAdmin)}" name="admin" id="admin">
+                <label class="form-check-label mr-3" for="admin">Administrator</label>
+
                 <input class="form-check-input" type="checkbox" th:checked="${#sets.contains(username.roles,roleModo)}" name="modo" id="modo">
+                <label class="form-check-label mr-3" for="modo">Moderator</label>
+
                 <button type="submit" class="mr-auto btn btn-primary">validate</button>
             </form></td>
         </tr>
         </tbody>
     </table>
 </div>
+<div th:replace="fragments/fragments.html :: scripts"></div>
 </body>
 </html>

@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody class="whiteBackground">
-        <tr th:each="post, iterStat: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
+        <tr class="colorHover" th:each="post, iterStat: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
             <td th:text="${post.name}">Default name</td>
             <td th:text="${dates[iterStat.index]}">Default date</td>
             <td class="text-right">

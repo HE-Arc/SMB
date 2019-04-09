@@ -17,7 +17,7 @@
         </thead>
         <tbody class="whiteBackground">
 
-        <tr th:each="board: ${boards}" th:onclick="'window.location.href=\'/boards/'+ ${board.id} + '\''">
+        <tr class="colorHover" th:each="board: ${boards}" th:onclick="'window.location.href=\'/boards/'+ ${board.id} + '\''">
 
             <td th:text="${board.name}">Default name</td>
             <td th:text="${board.description}">Default description</td>
