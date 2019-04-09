@@ -1,6 +1,6 @@
 package ch.hearc.smb.model;
 
-import ch.hearc.smb.utils.ManageDate;
+import ch.hearc.smb.Helper.ManageDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

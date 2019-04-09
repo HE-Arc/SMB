@@ -1,4 +1,4 @@
-package ch.hearc.smb.utils;
+package ch.hearc.smb.Helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
