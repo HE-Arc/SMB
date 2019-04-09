@@ -31,8 +31,8 @@
             <td th:text="${post.name}">Default name</td>
             <td th:text="${dates[iterStat.index]}">Default date</td>
             <td class="text-right">
-                <a sec:authorize="hasRole('ROLE_ADMIN') ||hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
-                <a sec:authorize="hasRole('ROLE_ADMIN') ||hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
+                <a th:if="${currentUser.id==post.id}" sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
+                <a th:if="${currentUser.id==post.id}" sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>
     </table>

@@ -2,14 +2,18 @@ package ch.hearc.smb.controller;
 
 
 import ch.hearc.smb.model.Board;
+import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.Post;
 import ch.hearc.smb.service.BoardService;
+import ch.hearc.smb.service.CustomUserServiceImpl;
 import ch.hearc.smb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,6 +32,9 @@ public class BoardController {
 
     @Autowired PostService postService;
 
+    @Autowired
+    CustomUserServiceImpl customUserDetailsService;
+
     @GetMapping("/{id}")
     public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=5, page=0) Pageable pageable) {
         Board board = boardService.find(id);
@@ -38,6 +45,9 @@ public class BoardController {
         model.put("posts", posts);
         model.put("dates", dates);
         model.put("pageUrl", "/boards/" + board.getId());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
+        model.put("currentUser", actualUser);
         return "board_id";
     }
 
