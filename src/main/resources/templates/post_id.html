@@ -18,7 +18,9 @@
             <div class="form-group" id="contentContainer">
                 <textarea id="content" th:field="*{content}"></textarea>
             </div>
-            <div class="invalid-feedback" style="display: inline !important;" th:if="${error.length()>0}" th:text="${error}">Validation error</div>
+            <div class="invalid-feedback" style="display: inline !important;" th:if="${error.length()>0}"
+                 th:text="${error}">Validation error
+            </div>
             <input type="hidden" id="post" th:field="*{post}">
             <input type="hidden" id="user" th:field="*{user}">
             <input type="hidden" id="createdDate" th:field="*{createdDate}">
@@ -43,8 +45,15 @@
     function addComment(pageComments) {
         const comments = pageComments.content
         for (const commentId in comments) {
-            $('#comment').append(`<div class="border borderCustom rounded p-2 my-2"><div>${marked(comments[commentId].content)}</div>
-            <div class="text-right mr-3"><small>Answered by ${users[commentId]} the ${commentDates[commentId]}</small></div></div>`)
+            strLink = ""
+            if (hasAccess) {
+                strLink = `<div class="float-right"><a href="/comments/${comments[commentId].id}/delete" class="text-danger"><i class="fas fa-trash"></i></a></div>`
+            }
+            $('#comment').append(`<div class="border borderCustom rounded p-2 my-2">
+                ${strLink}
+                <div>${marked(comments[commentId].content)}</div>
+                <div class="text-right mr-3"><small>Answered by ${users[commentId]} the ${commentDates[commentId]}</small></div>
+            </div>`)
             //Source : https://stackoverflow.com/questions/867916/creating-a-div-element-in-jquery
         }
         if (pageComments.last === true) {
@@ -67,7 +76,11 @@
     const pageComments = /*[[${comments}]]*/
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
-        actualPage = pageComments.number
+    hasAccess = false
+    /*[# sec:authorize="hasRole('ROLE_ADMIN')||hasRole('ROLE_MODO') "]*/
+        hasAccess = true
+    /*[/]*/
+    actualPage = pageComments.number
     addComment(pageComments)
     /*]]>*/
 </script>
