@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,7 @@ public class CommentController {
     @Autowired
     PostService postService;
 
+    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/{id}/delete")
     public String deleteComment(@PathVariable Long id) {
         Comment comment = commentService.find(id);
@@ -48,6 +50,5 @@ public class CommentController {
         post.setModifiedDate(comment.getCreatedDate());
         postService.save(post);
         return "redirect:posts/" + comment.getPost().getId();
-
     }
 }

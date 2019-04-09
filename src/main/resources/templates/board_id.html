@@ -22,7 +22,7 @@
             <th scope="col">Name</th>
             <th scope="col">Last modified</th>
 
-            <th scope="col"><a sec:authorize="isAuthenticated()" class="float-right"
+            <th scope="col"><a class="float-right"
                                th:href="'/posts/create?boardId=' +  ${board.id}"><i class="fas fa-plus"></i></a></th>
         </tr>
         </thead>
@@ -31,8 +31,8 @@
             <td th:text="${post.name}">Default name</td>
             <td th:text="${dates[iterStat.index]}">Default date</td>
             <td class="text-right">
-                <a sec:authorize="isAuthenticated()" th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
-                <a sec:authorize="isAuthenticated()" th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
+                <a sec:authorize="hasRole('ROLE_ADMIN') ||hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
+                <a sec:authorize="hasRole('ROLE_ADMIN') ||hasRole('ROLE_MODO') " th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
         </tr>
         </tbody>
     </table>
