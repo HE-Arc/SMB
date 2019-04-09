@@ -8,7 +8,6 @@ import ch.hearc.smb.service.BoardService;
 import ch.hearc.smb.service.CommentService;
 import ch.hearc.smb.service.CustomUserServiceImpl;
 import ch.hearc.smb.service.PostService;
-import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -43,8 +42,8 @@ public class PostController {
 
 
     @GetMapping("/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=5, page=0) Pageable pageable, @RequestParam(required=false) String error) {
-        if(error != null) {
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value = 5, page = 0) Pageable pageable, @RequestParam(required = false) String error, HttpServletRequest request) {
+        if (error != null) {
             model.put("error", "size must be between 1 and 300");
         } else {
             model.put("error", "");
@@ -61,6 +60,7 @@ public class PostController {
         model.put("customUsers", customUsers);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
+        model.put("currentUser", actualUser);
         model.put("comment", new Comment(post, actualUser));
         return "post_id";
     }

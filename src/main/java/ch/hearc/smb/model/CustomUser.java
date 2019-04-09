@@ -1,10 +1,9 @@
 package ch.hearc.smb.model;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -99,5 +98,11 @@ public class CustomUser {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public boolean equals(Object customUser) {
+        if (customUser == this) { return true; }
+        if (customUser == null || !(customUser instanceof CustomUser) ) { return false; }
+        return Objects.equals(this.id, ((CustomUser) customUser).id);
     }
 }
