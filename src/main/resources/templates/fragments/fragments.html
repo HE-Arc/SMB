@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a href="/boards" class="navbar-link">Boards </a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
                     <a href="/admin" class="navbar-link">Admin </a>
                 </li>
             </ul>

@@ -7,6 +7,7 @@ import ch.hearc.smb.repository.CustomUserRepository;
 import ch.hearc.smb.repository.RoleRepository;
 import ch.hearc.smb.service.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class AdminController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin")
     public String admin(Model model, HttpServletRequest request) {
 
@@ -57,7 +59,7 @@ public class AdminController {
         return "admin";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @PutMapping("admin/changerole/{id}/{search}")
     public String changeRole(HttpServletRequest request, @PathVariable Long id, @PathVariable String search) {
 
