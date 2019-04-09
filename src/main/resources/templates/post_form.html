@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="content">Post content</label>
             <textarea class="form-control" id="content" th:field="*{content}"
-                      th:classappend="${#fields.hasErrors('content')} ? 'is-invalid' : '' " required></textarea>
+                      th:classappend="${#fields.hasErrors('content')} ? 'is-invalid' : '' "></textarea>
             <div class="invalid-feedback"
                  th:each="error: ${#fields.errors('content')}"
                  th:text="${error}">Validation error
