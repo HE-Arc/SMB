@@ -9,7 +9,9 @@ import ch.hearc.smb.service.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
@@ -37,27 +39,27 @@ public class AdminController {
             model.addAttribute("roleUpdate", "User " + user + " has been updated");
         }
 
-        return "admin";
-    }
+        String search = request.getParameter("search");
+        if (search != null) {
+            Role roleAdmin = roleRepository.findByName("ROLE_ADMIN");
+            Role roleModo = roleRepository.findByName("ROLE_MODO");
+            List<CustomUser> users = null;
 
-    @PostMapping("/admin")
-    public String admin(HttpServletRequest request, Model model) {
-        String username = request.getParameter("username");
-        Role roleAdmin = roleRepository.findByName("ROLE_ADMIN");
-        Role roleModo = roleRepository.findByName("ROLE_MODO");
-        List<CustomUser> users = null;
-        if (username != "") {
-            users = customUserService.findByUsernameContaining(username);
+            users = customUserService.findByUsernameContaining(search);
+
+            model.addAttribute("usernames", users);
+            model.addAttribute("roleAdmin", roleAdmin);
+            model.addAttribute("roleModo", roleModo);
+            model.addAttribute("search",search);
         }
-        model.addAttribute("usernames", users);
-        model.addAttribute("roleAdmin", roleAdmin);
-        model.addAttribute("roleModo", roleModo);
+
 
         return "admin";
     }
 
-    @PutMapping("admin/changerole/{id}")
-    public String changeRole(HttpServletRequest request, @PathVariable Long id) {
+
+    @PutMapping("admin/changerole/{id}/{search}")
+    public String changeRole(HttpServletRequest request, @PathVariable Long id, @PathVariable String search) {
 
         String admin = request.getParameter("admin");
         String modo = request.getParameter("modo");
@@ -78,7 +80,7 @@ public class AdminController {
         CustomUser user = customUserService.findByCustomId(id);
         user.setRoles(roles);
         customUserRepository.save(user);
-        return "redirect:/admin?user=" + user.getUsername();
+        return "redirect:/admin?user=" + user.getUsername() + "&search=" + search;
     }
 }
 
