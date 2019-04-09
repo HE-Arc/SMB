@@ -12,7 +12,7 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
-            <th scope="col"><a sec:authorize="isAuthenticated()" class="float-right" href="/boards/create"><i class="fas fa-plus"></i></a></th>
+            <th scope="col"><a sec:authorize="hasRole('ROLE_ADMIN') ||hasRole('ROLE_MODO') " class="float-right" href="/boards/create"><i class="fas fa-plus"></i></a></th>
         </tr>
         </thead>
         <tbody class="whiteBackground">

@@ -1,15 +1,15 @@
 package ch.hearc.smb.controller;
 
 
-import ch.hearc.smb.model.Post;
-
-import ch.hearc.smb.service.BoardService;
 import ch.hearc.smb.model.Board;
+import ch.hearc.smb.model.Post;
+import ch.hearc.smb.service.BoardService;
 import ch.hearc.smb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,12 +56,14 @@ public class BoardController {
     }
 
 
+    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/create")
     public String createBoardForm(Map<String, Object> model) {
         model.put("board", new Board());
         return "board_form";
     }
 
+    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/{id}/edit")
     public String modifyBoardForm(Model model, @PathVariable Long id) {
         System.out.println(boardService.find(id).getId());
@@ -75,12 +77,14 @@ public class BoardController {
         return "boards";
     }
 
+    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/{id}/delete")
     public String deleteBoard(@PathVariable Long id) {
         boardService.delete(id);
         return "redirect:/boards";
     }
 
+    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @PostMapping("")
     public String createBoard(@ModelAttribute("board") @Validated Board board, BindingResult errors) {
         if (errors.hasErrors()) {
