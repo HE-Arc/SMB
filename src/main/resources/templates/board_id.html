@@ -9,8 +9,9 @@
 <h1 class="display-3 text-center" th:text="${board.name}">Default name</h1>
 
 <div class="container mt-3">
-<!--    source : https://stackoverflow.com/questions/10520899/form-action-with-javascript/34467977-->
-    <form class="form-inline mb-3" action="javascript:;" onsubmit="window.location.href=`/boards/3/search/${$('#searchContent').val()}`">
+    <!--    source : https://stackoverflow.com/questions/10520899/form-action-with-javascript/34467977-->
+    <form class="form-inline mb-3" action="javascript:;"
+          onsubmit="window.location.href=`/boards/3/search/${$('#searchContent').val()}`">
         <div class="form-group ml-auto mr-2">
             <input type="text" class="form-control" id="searchContent" placeholder="Search" th:value="${searchContent}">
         </div>
@@ -27,20 +28,35 @@
         </tr>
         </thead>
         <tbody class="whiteBackground">
-        <tr class="colorHover" th:each="post, iterStat: ${posts}" th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
+        <tr class="colorHover" th:each="post, iterStat: ${posts}"
+            th:onclick="'window.location.href=\'/posts/'+ ${post.id} + '\''">
             <td th:text="${post.name}">Default name</td>
             <td th:text="${dates[iterStat.index]}">Default date</td>
             <td class="text-right">
-                <a sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_MODO') || currentUser.id==post.id" th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
-                <a sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_MODO' || currentUser.id==post.id) " th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i class="fas fa-trash"></i></a></td>
+                <span sec:authorize="isAuthenticated()">
+                <a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')') || currentUser.equals(post.user)}"
+                   th:href="@{/posts/__${post.id}__/edit}" class="mr-2 text-success"><i class="fas fa-pen"></i></a>
+                <a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')') || currentUser.equals(post.user)}"
+                   th:href="@{/posts/__${post.id}__/delete}" class="float-right text-danger"><i
+                        class="fas fa-trash"></i></a></span></td>
+
         </tr>
         </tbody>
     </table>
     <div class="row">
-        <div class="ml-auto col-auto text-center"><a th:class="${posts.number != 0} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${0}__}"><i class="pageChanger fas fa-angle-double-left"></i></a></div>
-        <div class="col-auto text-center"><a th:class="${posts.number > 0} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.number - 1}__}"><i class="pageChanger fas fa-angle-left"></i></a></div>
-        <div class="col-auto text-center"><a th:class="${posts.number < posts.totalPages -1 } ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.number + 1}__}"><i class="pageChanger fas fa-angle-right"></i></a></div>
-        <div class="mr-auto col-auto text-center"><a th:class="${posts.number != (posts.totalPages==0 ? posts.totalPages : posts.totalPages - 1)} ? '' : 'disabled'" th:href="@{__${pageUrl}__?page=__${posts.totalPages==0 ? posts.totalPages : posts.totalPages - 1}__}"><i class="pageChanger fas fa-angle-double-right"></i></a></div>
+        <div class="ml-auto col-auto text-center"><a th:class="${posts.number != 0} ? '' : 'disabled'"
+                                                     th:href="@{__${pageUrl}__?page=__${0}__}"><i
+                class="pageChanger fas fa-angle-double-left"></i></a></div>
+        <div class="col-auto text-center"><a th:class="${posts.number > 0} ? '' : 'disabled'"
+                                             th:href="@{__${pageUrl}__?page=__${posts.number - 1}__}"><i
+                class="pageChanger fas fa-angle-left"></i></a></div>
+        <div class="col-auto text-center"><a th:class="${posts.number < posts.totalPages -1 } ? '' : 'disabled'"
+                                             th:href="@{__${pageUrl}__?page=__${posts.number + 1}__}"><i
+                class="pageChanger fas fa-angle-right"></i></a></div>
+        <div class="mr-auto col-auto text-center"><a
+                th:class="${posts.number != (posts.totalPages==0 ? posts.totalPages : posts.totalPages - 1)} ? '' : 'disabled'"
+                th:href="@{__${pageUrl}__?page=__${posts.totalPages==0 ? posts.totalPages : posts.totalPages - 1}__}"><i
+                class="pageChanger fas fa-angle-double-right"></i></a></div>
     </div>
 </div>
 

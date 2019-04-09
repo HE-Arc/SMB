@@ -77,7 +77,7 @@
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
     hasAccess = false
-    /*[# sec:authorize="hasRole('ROLE_ADMIN')||hasRole('ROLE_MODO') "]*/
+    /*[# th:if="${#authorization.expression('isAuthenticated()') && (#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')') || currentUser.equals(post.user))}"]*/
         hasAccess = true
     /*[/]*/
     actualPage = pageComments.number
