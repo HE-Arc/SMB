@@ -46,7 +46,7 @@ public class Comment {
         this.post = post;
         this.user = user;
 
-        this.createdDate = ManageDate.dateToDB(new Date());
+        this.createdDate = ManageDate.getInstance().dateToDB(new Date());
 
     }
 
@@ -96,7 +96,7 @@ public class Comment {
 
 
     public String getDateDisplay() {
-        return ManageDate.dateFromDBToDisplay(createdDate);
+        return ManageDate.getInstance().dateFromDBToDisplay(createdDate);
     }
 
 }

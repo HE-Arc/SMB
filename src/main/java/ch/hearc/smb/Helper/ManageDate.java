@@ -5,14 +5,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ManageDate {
-    private static SimpleDateFormat dfDataBase = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    private static SimpleDateFormat dfDisplay = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+    private SimpleDateFormat dfDataBase;
+    private SimpleDateFormat dfDisplay;
+    private static ManageDate instance = null;
 
-    public static synchronized String dateToDB(Date dateIn) {
+    private ManageDate() {
+        dfDataBase = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        dfDisplay = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+    }
+
+    public static synchronized ManageDate getInstance() {
+        if(instance == null) {
+            instance = new ManageDate();
+        }
+        return instance;
+    }
+
+    public String dateToDB(Date dateIn) {
         return dfDataBase.format(dateIn);
     }
 
-    public static synchronized Date dateFromDB(String dateIn) {
+    public Date dateFromDB(String dateIn) {
         try {
             return dfDataBase.parse(dateIn);
         } catch (ParseException e) {
@@ -21,11 +34,11 @@ public class ManageDate {
         return new Date(); //In case there is a problem
     }
 
-    public static synchronized String dateToDisplay(Date dateIn) {
+    public String dateToDisplay(Date dateIn) {
         return dfDisplay.format(dateIn);
     }
 
-    public static synchronized Date dateFromDisplay(String dateIn) {
+    public Date dateFromDisplay(String dateIn) {
         try {
             return dfDisplay.parse(dateIn);
         } catch (ParseException e) {
@@ -34,7 +47,7 @@ public class ManageDate {
         return new Date(); //In case there is a problem
     }
 
-    public static synchronized String dateFromDBToDisplay(String dateIn) {
+    public String dateFromDBToDisplay(String dateIn) {
         return dateToDisplay(dateFromDB(dateIn));
     }
 }

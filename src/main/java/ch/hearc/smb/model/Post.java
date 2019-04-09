@@ -59,7 +59,7 @@ public class Post {
         this.comments = new ArrayList<>();
         this.user = user;
 
-        this.createdDate = ManageDate.dateToDB(new Date());
+        this.createdDate = ManageDate.getInstance().dateToDB(new Date());
 
         this.modifiedDate = this.createdDate;
     }
@@ -136,7 +136,7 @@ public class Post {
 
 
     public String getDateDisplay() {
-        return ManageDate.dateFromDBToDisplay(modifiedDate);
+        return ManageDate.getInstance().dateFromDBToDisplay(modifiedDate);
     }
 
     @Override
