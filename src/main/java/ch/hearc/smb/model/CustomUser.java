@@ -1,6 +1,9 @@
 package ch.hearc.smb.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,9 +17,13 @@ public class CustomUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(unique = true)
     private String username;
     private String password;
 
+    @NotNull
+    @Column(unique = true)
     private String email;
 
     @Transient

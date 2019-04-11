@@ -59,8 +59,11 @@ public class PostController {
         model.put("commentDates", commentDates);
         List<String> customUsers = comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
         model.put("customUsers", customUsers);
+        List<Long> idUser = comments.stream().map(c -> c.getUser().getId()).collect(Collectors.toList());
+        model.put("idUser", idUser);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
+        System.out.println(actualUser);
         model.put("currentUser", actualUser);
         model.put("comment", new Comment(post, actualUser));
         return "post_id";

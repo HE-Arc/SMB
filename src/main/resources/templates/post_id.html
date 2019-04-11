@@ -46,7 +46,7 @@
         const comments = pageComments.content
         for (const commentId in comments) {
             strLink = ""
-            if (hasAccess) {
+            if (hasAccess || userIds[commentId] == currentUserId) {
                 strLink = `<div class="float-right"><a href="/comments/${comments[commentId].id}/delete" class="text-danger"><i class="fas fa-trash"></i></a></div>`
             }
             $('#comment').append(`<div class="border borderCustom rounded p-2 my-2">
@@ -76,6 +76,8 @@
     const pageComments = /*[[${comments}]]*/
     const users = /*[[${customUsers}]]*/
     const commentDates = /*[[${commentDates}]]*/
+    const userIds = /*[[${idUser}]]*/
+    const currentUserId = /*[[${currentUser!=null ? currentUser.id : -1}]]*/
     hasAccess = false
     /*[# th:if="${#authorization.expression('isAuthenticated()') && (#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')'))}"]*/
         hasAccess = true
