@@ -29,11 +29,9 @@ public class CommentController {
     @Autowired
     PostService postService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MODO') or #ownerName == authentication.name")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MODO') or #comment.user.username == authentication.name")
     @PostMapping("/delete")
-    public String deleteComment(@RequestParam Long commentId, @RequestParam String ownerName) {
-        System.out.println("COUCOU");
-        Comment comment = commentService.find(commentId);
+    public String deleteComment(@RequestParam Comment comment) {
         Long idPost = comment.getPost().getId();
         commentService.delete(comment);
         return "redirect:/posts/" + idPost;

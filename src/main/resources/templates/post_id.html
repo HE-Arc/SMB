@@ -47,7 +47,7 @@
         for (const commentId in comments) {
             let strLink = ""
             if (hasAccess || userIds[commentId] == currentUserId) {
-                strLink = `<div class="float-right"><form method="post" action="/comments/delete"><input type="hidden" name=${csrfTokenName} value=${csrfToken}><input type="hidden" name="commentId" value=${comments[commentId].id}><input type="hidden" name="ownerName" value=${users[commentId]}><button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button></form></div>`
+                strLink = `<div class="float-right"><form method="post" action="/comments/delete"><input type="hidden" name=${csrfTokenName} value=${csrfToken}><input type="hidden" name="comment" value=${comments[commentId].id}><button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button></form></div>`
             }
             $('#comment').append(`<div class="border borderCustom rounded p-2 my-2">
                 ${strLink}
