@@ -16,12 +16,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -41,37 +41,37 @@ public class PostController {
 
 
     @GetMapping("/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value = 5, page = 0) Pageable pageable, @RequestParam(required = false) String error) {
+    public String specificPost(Model model, @PathVariable Long id, @PageableDefault(value = 5, page = 0) Pageable pageable, @RequestParam(required = false) String error) {
         if (error != null) {
-            model.put("error", "size must be between 1 and 300");
+            model.addAttribute("error", "size must be between 1 and 300");
         } else {
-            model.put("error", "");
+            model.addAttribute("error", "");
         }
 
         Post post = postService.find(id);
-        model.put("post", post);
-        model.put("postDate", post.getDateDisplay());
+        model.addAttribute("post", post);
+        model.addAttribute("postDate", post.getDateDisplay());
         Page<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageable);
-        model.put("comments", comments);
+        model.addAttribute("comments", comments);
         List<String> commentDates = comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList());
-        model.put("commentDates", commentDates);
+        model.addAttribute("commentDates", commentDates);
         List<String> customUsers = comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
-        model.put("customUsers", customUsers);
+        model.addAttribute("customUsers", customUsers);
         List<Long> idUser = comments.stream().map(c -> c.getUser().getId()).collect(Collectors.toList());
-        model.put("idUser", idUser);
+        model.addAttribute("idUser", idUser);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
-        model.put("currentUser", actualUser);
-        model.put("comment", new Comment(post, actualUser));
+        model.addAttribute("currentUser", actualUser);
+        model.addAttribute("comment", new Comment(post, actualUser));
         return "post_id";
     }
 
     @GetMapping("/create")
-    public String createPostForm(Map<String, Object> model, @RequestParam Long boardId) {
+    public String createPostForm(Model model, @RequestParam Long boardId) {
         Board board = boardService.find(boardId);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
-        model.put("post", new Post(board, actualUser));
+        model.addAttribute("post", new Post(board, actualUser));
         return "post_form";
     }
 
@@ -90,6 +90,5 @@ public class PostController {
         }
         postService.save(post);
         return "redirect:posts/" + post.getId();
-
     }
 }

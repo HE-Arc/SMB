@@ -1,19 +1,12 @@
 package ch.hearc.smb.controller;
 
 
-import ch.hearc.smb.service.CustomUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
-
-    @Autowired
-    private CustomUserService customUserService;
-
-
     @GetMapping("/login")
     public String login(Model model, String error, String logout, String invalidlink) {
         if (error != null)
@@ -26,6 +19,4 @@ public class LoginController {
             model.addAttribute("error", "Invalid link");
             return "login";
     }
-
-
 }

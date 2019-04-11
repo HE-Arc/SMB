@@ -104,8 +104,7 @@ public class RegisterController {
 
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
-    public String showChangePasswordPage(Model model,
-                                         @RequestParam("id") long id, @RequestParam("token") String token) {
+    public String showChangePasswordPage(@RequestParam("id") long id, @RequestParam("token") String token) {
         String result = securityService.validatePasswordResetToken(id, token);
         if (result != null) {
             return "redirect:/login?" + result;
@@ -115,9 +114,8 @@ public class RegisterController {
 
 
     @RequestMapping(value = "/user/updatePassword", method = RequestMethod.POST)
-    public String registration(HttpServletRequest request, @ModelAttribute("pwdForm") PasswordDto passwordDto, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("pwdForm") PasswordDto passwordDto, BindingResult bindingResult) {
         resetPasswordValidator.validate(passwordDto, bindingResult);
-
         String result = securityService.validatePasswordResetToken(passwordDto.getId(), passwordDto.getToken());
 
         if (result != null) {
@@ -130,25 +128,19 @@ public class RegisterController {
         }
 
         CustomUser user = customUserService.findByCustomId(passwordDto.getId());
-
-
         customUserService.changeUserPassword(user, passwordDto.getNewPassword());
 
         return "redirect:/login";
 
     }
 
-    private SimpleMailMessage constructResetTokenEmail(
-            String contextPath, Locale locale, String token, CustomUser user) {
-        String url = contextPath + "/user/changePassword?id=" +
-                user.getId() + "&token=" + token;
-        String message = messageSource.getMessage("message.resetPassword",
-                null, locale);
+    private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, CustomUser user) {
+        String url = contextPath + "/user/changePassword?id=" + user.getId() + "&token=" + token;
+        String message = messageSource.getMessage("message.resetPassword",null, locale);
         return constructEmail("Reset Password", message + " \r\n" + url, user);
     }
 
-    private SimpleMailMessage constructEmail(String subject, String body,
-                                             CustomUser user) {
+    private SimpleMailMessage constructEmail(String subject, String body, CustomUser user) {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setSubject(subject);
         email.setText(body);
