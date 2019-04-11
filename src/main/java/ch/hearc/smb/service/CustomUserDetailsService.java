@@ -18,7 +18,7 @@ import ch.hearc.smb.model.Role;
 import ch.hearc.smb.repository.CustomUserRepository;
 
 @Service
-public class CustomUserDetailsServiceImpl implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private CustomUserRepository customUserRepository;

@@ -51,21 +51,6 @@ public class BoardController {
         return "board_id";
     }
 
-    @GetMapping("/{id}/search/{searchContent}")
-    public String searchPostInBoard(Map<String, Object> model, @PathVariable Long id, @PathVariable String searchContent, @PageableDefault(value=5, page=0) Pageable pageable) {
-        Board board = boardService.find(id);
-        Page<Post> posts = postService.findByName(board.getId(), searchContent, pageable);
-        List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
-
-        model.put("board", board);
-        model.put("posts", posts);
-        model.put("dates", dates);
-        model.put("searchContent", searchContent);
-        model.put("pageUrl", "/boards/" + board.getId() + "/search/" + searchContent);
-        return "board_id";
-    }
-
-
     @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/create")
     public String createBoardForm(Map<String, Object> model) {

@@ -3,7 +3,7 @@ package ch.hearc.smb.controller;
 import ch.hearc.smb.dto.PasswordDto;
 import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.service.CustomUserServiceImpl;
-import ch.hearc.smb.service.SecurityServiceImpl;
+import ch.hearc.smb.service.SecurityService;
 import ch.hearc.smb.validator.CustomUserValidator;
 import ch.hearc.smb.validator.ResetPasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class RegisterController {
     CustomUserServiceImpl customUserService;
 
     @Autowired
-    private SecurityServiceImpl securityService;
+    private SecurityService securityService;
 
     @Autowired
     private CustomUserValidator customUserValidator;
