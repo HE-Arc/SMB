@@ -5,7 +5,7 @@ import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.Role;
 import ch.hearc.smb.repository.CustomUserRepository;
 import ch.hearc.smb.repository.RoleRepository;
-import ch.hearc.smb.service.CustomUserServiceImpl;
+import ch.hearc.smb.service.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ import java.util.Set;
 public class AdminController {
 
     @Autowired
-    CustomUserServiceImpl customUserService;
+    CustomUserService customUserService;
 
     @Autowired
     private CustomUserRepository customUserRepository;
@@ -54,8 +54,6 @@ public class AdminController {
             model.addAttribute("roleModo", roleModo);
             model.addAttribute("search",search);
         }
-
-
         return "admin";
     }
 
@@ -81,7 +79,7 @@ public class AdminController {
 
         CustomUser user = customUserService.findByCustomId(id);
         user.setRoles(roles);
-        customUserRepository.save(user);
+        customUserService.save(user);
         return "redirect:/admin?user=" + user.getUsername() + "&search=" + search;
     }
 }

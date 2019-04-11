@@ -1,7 +1,7 @@
 package ch.hearc.smb.controller;
 
 
-import ch.hearc.smb.service.CustomUserServiceImpl;
+import ch.hearc.smb.service.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
     @Autowired
-    private CustomUserServiceImpl customUserService;
+    private CustomUserService customUserService;
 
 
     @GetMapping("/login")

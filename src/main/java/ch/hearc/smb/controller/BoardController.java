@@ -5,7 +5,7 @@ import ch.hearc.smb.model.Board;
 import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.Post;
 import ch.hearc.smb.service.BoardService;
-import ch.hearc.smb.service.CustomUserServiceImpl;
+import ch.hearc.smb.service.CustomUserService;
 import ch.hearc.smb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,7 +33,7 @@ public class BoardController {
     @Autowired PostService postService;
 
     @Autowired
-    CustomUserServiceImpl customUserDetailsService;
+    CustomUserService customUserDetailsService;
 
     @GetMapping("/{id}")
     public String specificBoard(Map<String, Object> model, @PathVariable Long id,@RequestParam(defaultValue = "") String search , @PageableDefault(value=5, page=0) Pageable pageable) {

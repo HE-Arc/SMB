@@ -2,7 +2,7 @@ package ch.hearc.smb.controller;
 
 import ch.hearc.smb.dto.PasswordDto;
 import ch.hearc.smb.model.CustomUser;
-import ch.hearc.smb.service.CustomUserServiceImpl;
+import ch.hearc.smb.service.CustomUserService;
 import ch.hearc.smb.service.SecurityService;
 import ch.hearc.smb.validator.CustomUserValidator;
 import ch.hearc.smb.validator.ResetPasswordValidator;
@@ -25,7 +25,7 @@ import java.util.UUID;
 public class RegisterController {
 
     @Autowired
-    CustomUserServiceImpl customUserService;
+    CustomUserService customUserService;
 
     @Autowired
     private SecurityService securityService;
