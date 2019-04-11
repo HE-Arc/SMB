@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -46,8 +45,7 @@ public class CustomUserService {
     }
 
     public CustomUser findByCustomId(long id){
-        Optional<CustomUser> customUser = customUserRepository.findById(id);
-        return customUser.orElseGet(CustomUser::new);
+        return customUserRepository.findById(id).orElseGet(CustomUser::new);
     }
 
     public List<CustomUser> findByUsernameContaining(String username)

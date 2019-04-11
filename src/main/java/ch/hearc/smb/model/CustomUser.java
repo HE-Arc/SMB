@@ -40,6 +40,7 @@ public class CustomUser {
         this.comments = new ArrayList<>();
         this.posts = new ArrayList<>();
         this.username = "";
+        this.email = "";
     }
 
     public Long getId() {
