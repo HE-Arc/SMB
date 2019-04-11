@@ -1,7 +1,5 @@
 package ch.hearc.smb.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -41,6 +39,7 @@ public class CustomUser {
     public CustomUser() {
         this.comments = new ArrayList<>();
         this.posts = new ArrayList<>();
+        this.username = "";
     }
 
     public Long getId() {
@@ -109,7 +108,12 @@ public class CustomUser {
 
     public boolean equals(Object customUser) {
         if (customUser == this) { return true; }
-        if (customUser == null || !(customUser instanceof CustomUser) ) { return false; }
+        if (!(customUser instanceof CustomUser)) { return false; }
         return Objects.equals(this.id, ((CustomUser) customUser).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

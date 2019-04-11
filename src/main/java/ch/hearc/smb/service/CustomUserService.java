@@ -4,21 +4,18 @@ import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.PasswordResetToken;
 import ch.hearc.smb.repository.CustomUserRepository;
 import ch.hearc.smb.repository.PasswordResetTokenRepository;
-import ch.hearc.smb.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class CustomUserService {
     @Autowired
     private CustomUserRepository customUserRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
@@ -49,7 +46,8 @@ public class CustomUserService {
     }
 
     public CustomUser findByCustomId(long id){
-        return customUserRepository.findById(id).get();
+        Optional<CustomUser> customUser = customUserRepository.findById(id);
+        return customUser.orElseGet(CustomUser::new);
     }
 
     public List<CustomUser> findByUsernameContaining(String username)
