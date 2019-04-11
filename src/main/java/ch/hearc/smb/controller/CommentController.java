@@ -10,11 +10,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.Convert;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/comments")
@@ -25,10 +29,11 @@ public class CommentController {
     @Autowired
     PostService postService;
 
-    @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
-    @GetMapping("/{id}/delete")
-    public String deleteComment(@PathVariable Long id) {
-        Comment comment = commentService.find(id);
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MODO') or #ownerName == authentication.name")
+    @PostMapping("/delete")
+    public String deleteComment(@RequestParam Long commentId, @RequestParam String ownerName) {
+        System.out.println("COUCOU");
+        Comment comment = commentService.find(commentId);
         Long idPost = comment.getPost().getId();
         commentService.delete(comment);
         return "redirect:/posts/" + idPost;

@@ -45,9 +45,9 @@
     function addComment(pageComments) {
         const comments = pageComments.content
         for (const commentId in comments) {
-            strLink = ""
+            let strLink = ""
             if (hasAccess || userIds[commentId] == currentUserId) {
-                strLink = `<div class="float-right"><a href="/comments/${comments[commentId].id}/delete" class="text-danger"><i class="fas fa-trash"></i></a></div>`
+                strLink = `<div class="float-right"><form method="post" action="/comments/delete"><input type="hidden" name=${csrfTokenName} value=${csrfToken}><input type="hidden" name="commentId" value=${comments[commentId].id}><input type="hidden" name="ownerName" value=${users[commentId]}><button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button></form></div>`
             }
             $('#comment').append(`<div class="border borderCustom rounded p-2 my-2">
                 ${strLink}
@@ -78,6 +78,8 @@
     const commentDates = /*[[${commentDates}]]*/
     const userIds = /*[[${idUser}]]*/
     const currentUserId = /*[[${currentUser!=null ? currentUser.id : -1}]]*/
+    const csrfTokenName = /*[[${_csrf.parameterName}]]*/
+    const csrfToken = /*[[${_csrf.token}]]*/
     hasAccess = false
     /*[# th:if="${#authorization.expression('isAuthenticated()') && (#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')'))}"]*/
         hasAccess = true

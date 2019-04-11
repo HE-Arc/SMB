@@ -21,7 +21,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -43,7 +42,7 @@ public class PostController {
 
 
     @GetMapping("/{id}")
-    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value = 5, page = 0) Pageable pageable, @RequestParam(required = false) String error, HttpServletRequest request) {
+    public String specificPost(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value = 5, page = 0) Pageable pageable, @RequestParam(required = false) String error) {
         if (error != null) {
             model.put("error", "size must be between 1 and 300");
         } else {
@@ -63,7 +62,6 @@ public class PostController {
         model.put("idUser", idUser);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
-        System.out.println(actualUser);
         model.put("currentUser", actualUser);
         model.put("comment", new Comment(post, actualUser));
         return "post_id";
