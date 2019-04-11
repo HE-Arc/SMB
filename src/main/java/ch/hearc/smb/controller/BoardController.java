@@ -36,15 +36,15 @@ public class BoardController {
     CustomUserServiceImpl customUserDetailsService;
 
     @GetMapping("/{id}")
-    public String specificBoard(Map<String, Object> model, @PathVariable Long id, @PageableDefault(value=5, page=0) Pageable pageable) {
+    public String specificBoard(Map<String, Object> model, @PathVariable Long id,@RequestParam(defaultValue = "") String search , @PageableDefault(value=5, page=0) Pageable pageable) {
         Board board = boardService.find(id);
-        Page<Post> posts = postService.getAllPostByDesc(board.getId(), pageable);
+        Page<Post> posts = postService.findByName(board.getId(), search, pageable);
         List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
-
+        model.put("search", search);
         model.put("board", board);
         model.put("posts", posts);
         model.put("dates", dates);
-        model.put("pageUrl", "/boards/" + board.getId());
+        model.put("pageUrl", "/boards/" + board.getId() + "?search=" + search);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
         model.put("currentUser", actualUser);
@@ -76,7 +76,6 @@ public class BoardController {
     @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/{id}/edit")
     public String modifyBoardForm(Model model, @PathVariable Long id) {
-        System.out.println(boardService.find(id).getId());
         model.addAttribute("board", boardService.find(id));
         return "board_form";
     }

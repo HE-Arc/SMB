@@ -5,7 +5,7 @@ import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.Role;
 import ch.hearc.smb.repository.CustomUserRepository;
 import ch.hearc.smb.repository.RoleRepository;
-import ch.hearc.smb.service.CustomUserService;
+import ch.hearc.smb.service.CustomUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ import java.util.Set;
 public class AdminController {
 
     @Autowired
-    CustomUserService customUserService;
+    CustomUserServiceImpl customUserService;
 
     @Autowired
     private CustomUserRepository customUserRepository;

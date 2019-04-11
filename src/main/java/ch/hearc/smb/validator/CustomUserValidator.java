@@ -1,7 +1,7 @@
 package ch.hearc.smb.validator;
 
 import ch.hearc.smb.model.CustomUser;
-import ch.hearc.smb.service.CustomUserService;
+import ch.hearc.smb.service.CustomUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class CustomUserValidator implements Validator {
 
     @Autowired
-    private CustomUserService customUserService;
+    private CustomUserServiceImpl customUserService;
 
     @Override
     public boolean supports(Class<?> aClass) {

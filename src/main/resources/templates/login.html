@@ -6,7 +6,7 @@
 <div th:replace="fragments/fragments.html :: navigation"></div>
 <div class="container">
     <form method="POST" action="#" th:action="@{/login}">
-        <h2 class="form-heading">Log in</h2>
+        <h1 class="text-center display-4 mb-3">Log in</h1>
         <div class="form-row">
             <div class="mx-auto col-md-6">
                 <div th:if="${message != null}" class="alert alert-success" th:text="${message}" role="alert">
@@ -37,7 +37,7 @@
         <div class="form-row">
             <div class="mx-auto my-md-3 col-md-6">
                 <button class="btn btn-lg btn-dark btn-block" type="submit">Log In</button>
-                <h4 class="text-center"><a href="/register">Create an account</a></h4>
+                <h4 class="text-center my-3"><a href="/register">Create an account</a></h4>
                 <h4 class="text-center"><a th:href="@{/forgotpassword}"
                                            th:text="#{message.resetPassword}">reset</a></h4>
             </div>

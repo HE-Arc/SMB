@@ -9,17 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Convert;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -54,7 +49,7 @@ public class CommentController {
     }
 
     @PostMapping("")
-    public String createComments(@ModelAttribute @Validated Comment comment, BindingResult errors, Model model) {
+    public String createComments(@ModelAttribute @Validated Comment comment, BindingResult errors) {
         if (errors.hasErrors()) {
             return "redirect:posts/" + comment.getPost().getId() + "?error=1";
         }
