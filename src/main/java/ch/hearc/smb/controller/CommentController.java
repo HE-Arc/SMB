@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Convert;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/comments")
@@ -39,8 +43,14 @@ public class CommentController {
 
     @GetMapping(value = "/{boardid}", produces = "application/json")
     public @ResponseBody
-    Page<Comment> getComments(@PathVariable Long boardid, @PageableDefault(value = 5, page = 0) Pageable pageable) {
-        return commentService.getAllPostByDesc(boardid, pageable);
+    Map<String, Object> getComments(@PathVariable Long boardid, @PageableDefault(value = 5, page = 0) Pageable pageable) {
+        Page<Comment> comments = commentService.getAllPostByDesc(boardid, pageable);
+        Map<String, Object> objectMap = new HashMap<>();
+        objectMap.put("comments", comments);
+        objectMap.put("commentDates",comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList()));
+        objectMap.put("customUsers", comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList()));
+        objectMap.put("idUser", comments.stream().map(c -> c.getUser().getId()).collect(Collectors.toList()));
+        return objectMap;
     }
 
     @PostMapping("")

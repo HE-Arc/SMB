@@ -42,7 +42,7 @@
 <div th:replace="fragments/fragments.html :: scripts_mde"></div>
 
 <script>
-    function addComment(pageComments) {
+    function addComment(pageComments, commentDates, users, userIds) {
         const comments = pageComments.content
         for (const commentId in comments) {
             let strLink = ""
@@ -62,9 +62,9 @@
     }
 
     function loadComment() {
-        actualPage++
         axios.get(`/comments/${postId}?page=${actualPage}`).then(result => {
-            addComment(result.data)
+            actualPage = result.data.comments.number + 1
+            addComment(result.data.comments, result.data.commentDates, result.data.customUsers, result.data.idUser)
         })
     }
 </script>
@@ -73,10 +73,6 @@
     /*<![CDATA[*/
     document.getElementById('contenuPost').innerHTML = marked(/*[[${post.content}]]*/);
     const postId = /*[[${post.id}]]*/
-    const pageComments = /*[[${comments}]]*/
-    const users = /*[[${customUsers}]]*/
-    const commentDates = /*[[${commentDates}]]*/
-    const userIds = /*[[${idUser}]]*/
     const currentUserId = /*[[${currentUser!=null ? currentUser.id : -1}]]*/
     const csrfTokenName = /*[[${_csrf.parameterName}]]*/
     const csrfToken = /*[[${_csrf.token}]]*/
@@ -84,8 +80,8 @@
     /*[# th:if="${#authorization.expression('isAuthenticated()') && (#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_MODO'')'))}"]*/
         hasAccess = true
     /*[/]*/
-    actualPage = pageComments.number
-    addComment(pageComments)
+    actualPage = 0
+    loadComment()
     /*]]>*/
 </script>
 </body>
