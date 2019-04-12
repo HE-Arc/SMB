@@ -35,7 +35,6 @@ public class SecurityService {
 		if (userDetails instanceof UserDetails) {
 			return ((UserDetails) userDetails).getUsername();
 		}
-
 		return null;
 	}
 
@@ -47,7 +46,7 @@ public class SecurityService {
 
 		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			logger.debug(String.format("Auto login %s successfully", username));
+			logger.debug(String.format("Auto login {0} successfully", username));
 		}
 	}
 

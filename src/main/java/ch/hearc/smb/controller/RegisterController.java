@@ -70,7 +70,7 @@ public class RegisterController {
         return "forgotPassword";
     }
 
-    @RequestMapping(value = "/forgotpassword", method = RequestMethod.POST)
+    @PostMapping("/forgotpassword")
     public String forgotPassword(HttpServletRequest request) {
         String email = request.getParameter("email");
 
@@ -96,14 +96,12 @@ public class RegisterController {
         }
 
         customUserService.save(userForm);
-
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-
         return "redirect:/";
     }
 
 
-    @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
+    @GetMapping("/user/changePassword")
     public String showChangePasswordPage(@RequestParam("id") long id, @RequestParam("token") String token) {
         String result = securityService.validatePasswordResetToken(id, token);
         if (result != null) {
@@ -113,7 +111,7 @@ public class RegisterController {
     }
 
 
-    @RequestMapping(value = "/user/updatePassword", method = RequestMethod.POST)
+    @PostMapping("/user/updatePassword")
     public String registration(@ModelAttribute("pwdForm") PasswordDto passwordDto, BindingResult bindingResult) {
         resetPasswordValidator.validate(passwordDto, bindingResult);
         String result = securityService.validatePasswordResetToken(passwordDto.getId(), passwordDto.getToken());

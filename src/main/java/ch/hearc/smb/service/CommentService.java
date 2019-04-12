@@ -16,8 +16,6 @@ public class CommentService {
     @Autowired
     private CommentRepository crepo;
 
-    private final static int SIZEPAGE = 5;
-
     public List<Comment> findAll() {
         List<Comment> comments = new ArrayList<>();
         crepo.findAll().forEach(comments::add);

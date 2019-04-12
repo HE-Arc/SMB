@@ -34,13 +34,16 @@ public class BoardController {
     @Autowired
     CustomUserService customUserDetailsService;
 
+    private static final String BOARD_PARAM_NAME = "board";
+    private static final String BOARD_PARAM_FORM = "board_form";
+
     @GetMapping("/{id}")
     public String specificBoard(Model model, @PathVariable Long id,@RequestParam(defaultValue = "") String search , @PageableDefault(value=5, page=0) Pageable pageable) {
         Board board = boardService.find(id);
         Page<Post> posts = postService.findByName(board.getId(), search, pageable);
         List<String> dates = posts.stream().map(Post::getDateDisplay).collect(Collectors.toList());
         model.addAttribute("search", search);
-        model.addAttribute("board", board);
+        model.addAttribute(BOARD_PARAM_NAME, board);
         model.addAttribute("posts", posts);
         model.addAttribute("dates", dates);
         model.addAttribute("pageUrl", "/boards/" + board.getId() + "?search=" + search);
@@ -53,15 +56,15 @@ public class BoardController {
     @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/create")
     public String createBoardForm(Model model) {
-        model.addAttribute("board", new Board());
-        return "board_form";
+        model.addAttribute(BOARD_PARAM_NAME, new Board());
+        return BOARD_PARAM_FORM;
     }
 
     @Secured({ "ROLE_ADMIN", "ROLE_MODO" })
     @GetMapping("/{id}/edit")
     public String modifyBoardForm(Model model, @PathVariable Long id) {
-        model.addAttribute("board", boardService.find(id));
-        return "board_form";
+        model.addAttribute(BOARD_PARAM_NAME, boardService.find(id));
+        return BOARD_PARAM_FORM;
     }
 
     @GetMapping("")
@@ -81,7 +84,7 @@ public class BoardController {
     @PostMapping("")
     public String createBoard(@ModelAttribute @Validated Board board, BindingResult errors) {
         if (errors.hasErrors()) {
-            return "board_form";
+            return BOARD_PARAM_FORM;
         }
         boardService.save(board);
         return "redirect:boards/" + board.getId();
