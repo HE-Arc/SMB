@@ -1,4 +1,4 @@
-package ch.hearc.smb.Helper;
+package ch.hearc.smb.helper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
