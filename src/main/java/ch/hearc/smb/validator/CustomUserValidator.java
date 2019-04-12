@@ -22,33 +22,37 @@ public class CustomUserValidator implements Validator {
         return CustomUser.class.equals(aClass);
     }
 
+    private static final String PARAM_USERNAME = "username";
+    private static final String PARAM_NOTEMPTY = "Not empty";
+    private static final String PARAM_EMAIL = "email";
+
     @Override
     public void validate(Object o, Errors errors) {
         CustomUser user = (CustomUser) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, PARAM_USERNAME, PARAM_NOTEMPTY);
         if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
-            errors.rejectValue("username", "Size.userForm.username");
+            errors.rejectValue(PARAM_USERNAME, "Size.userForm.username");
         }
         if (customUserService.findByCustomusername(user.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
+            errors.rejectValue(PARAM_USERNAME, "Duplicate.userForm.username");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, PARAM_EMAIL, PARAM_NOTEMPTY);
         if (validateEmail(user.getEmail())) {
-            errors.rejectValue("email", "Size.userForm.email");
+            errors.rejectValue(PARAM_EMAIL, "Size.userForm.email");
         }
         if (customUserService.findByCustomemail(user.getEmail()) != null) {
-            errors.rejectValue("email", "Duplicate.userForm.email");
+            errors.rejectValue(PARAM_EMAIL, "Duplicate.userForm.email");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", PARAM_NOTEMPTY);
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
-            errors.rejectValue("password", "Size.userForm.password");
+            errors.rejectValue("pwdE", "Size.userForm.password");
         }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+            errors.rejectValue("pwdConfirm", "Diff.userForm.passwordConfirm");
         }
     }
 

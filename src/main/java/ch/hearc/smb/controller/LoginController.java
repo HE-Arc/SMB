@@ -17,6 +17,7 @@ public class LoginController {
 
         if (invalidlink != null)
             model.addAttribute("error", "Invalid link");
-            return "login";
+
+        return "login";
     }
 }
