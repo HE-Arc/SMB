@@ -37,9 +37,9 @@
             <div class="mx-auto col-md-6">
                 <label th:text="#{label.user.password}">password</label>
                 <input type="password" th:field="*{password}" class="form-control"
-                       th:classappend="${#fields.hasErrors('pwd')} ? 'is-invalid' : '' " required/>
+                       th:classappend="${#fields.hasErrors('pwdE')} ? 'is-invalid' : '' " required/>
                 <div class="invalid-feedback"
-                     th:each="error : ${#fields.errors('pwd')}"
+                     th:each="error : ${#fields.errors('pwdE')}"
                      th:text="${error}">Validation error
                 </div>
             </div>
