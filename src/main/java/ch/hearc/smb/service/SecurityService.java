@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import java.text.MessageFormat;
 import java.util.Calendar;
 
 @Service
@@ -46,7 +47,7 @@ public class SecurityService {
 
 		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			logger.debug(String.format("Auto login {0} successfully", username));
+			logger.debug(MessageFormat.format("Auto login {0} successfully", username));
 		}
 	}
 
