@@ -1,5 +1,8 @@
 package ch.hearc.smb.Helper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +11,8 @@ public class ManageDate {
     private SimpleDateFormat dfDataBase;
     private SimpleDateFormat dfDisplay;
     private static ManageDate instance = null;
+
+    private Logger logger = LoggerFactory.getLogger(ManageDate.class);
 
     private ManageDate() {
         dfDataBase = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -29,7 +34,7 @@ public class ManageDate {
         try {
             return dfDataBase.parse(dateIn);
         } catch (ParseException e) {
-            e.printStackTrace();
+            logger.trace(e.toString());
         }
         return new Date(); //In case there is a problem
     }
@@ -42,7 +47,7 @@ public class ManageDate {
         try {
             return dfDisplay.parse(dateIn);
         } catch (ParseException e) {
-            e.printStackTrace();
+            logger.trace(e.toString());
         }
         return new Date(); //In case there is a problem
     }
