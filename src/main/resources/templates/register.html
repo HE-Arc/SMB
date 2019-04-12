@@ -37,9 +37,9 @@
             <div class="mx-auto col-md-6">
                 <label th:text="#{label.user.password}">password</label>
                 <input type="password" th:field="*{password}" class="form-control"
-                       th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : '' " required/>
+                       th:classappend="${#fields.hasErrors('pwd')} ? 'is-invalid' : '' " required/>
                 <div class="invalid-feedback"
-                     th:each="error : ${#fields.errors('password')}"
+                     th:each="error : ${#fields.errors('pwd')}"
                      th:text="${error}">Validation error
                 </div>
             </div>
@@ -48,9 +48,9 @@
             <div class="mx-auto col-md-6">
                 <label th:text="#{label.user.confirmPass}">confirm</label>
                 <input type="password" th:field="*{passwordConfirm}" class="form-control"
-                       th:classappend="${#fields.hasErrors('passwordConfirm')} ? 'is-invalid' : '' " required/>
+                       th:classappend="${#fields.hasErrors('pwdConfirm')} ? 'is-invalid' : '' " required/>
                 <div class="invalid-feedback"
-                     th:each="error : ${#fields.errors('passwordConfirm')}"
+                     th:each="error : ${#fields.errors('pwdConfirm')}"
                      th:text="${error}">Validation error
                 </div>
             </div>
