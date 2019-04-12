@@ -47,7 +47,7 @@ public class SecurityService {
 
 		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			logger.debug(MessageFormat.format("Auto login {0} successfully", username));
+			logger.trace(MessageFormat.format("Auto login {0} successfully", username));
 		}
 	}
 
