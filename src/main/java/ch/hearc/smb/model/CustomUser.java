@@ -111,5 +111,8 @@ public class CustomUser {
         return Objects.equals(this.id, ((CustomUser) customUser).id);
     }
 
-
+    @Override
+    public int hashCode() {
+        return username.hashCode() * email.hashCode();
+    }
 }
