@@ -2,10 +2,7 @@ package ch.hearc.smb.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -39,6 +36,7 @@ public class CustomUser {
     public CustomUser() {
         this.comments = new ArrayList<>();
         this.posts = new ArrayList<>();
+        this.roles = new HashSet<>();
         this.username = "";
         this.email = "";
     }
@@ -67,7 +65,7 @@ public class CustomUser {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRole(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -79,7 +77,7 @@ public class CustomUser {
         this.email = email;
     }
 
-    public void setRoles(Role role) {
+    public void setRole(Role role) {
         this.roles.add(role);
     }
 
@@ -113,8 +111,5 @@ public class CustomUser {
         return Objects.equals(this.id, ((CustomUser) customUser).id);
     }
 
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
+
 }

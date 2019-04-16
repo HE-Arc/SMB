@@ -17,14 +17,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HomeControllerTest {
+public class LoginControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
 
     @Test
-    public void HomeController_thenResponseIsCorrect() throws Exception {
+    public void loginController_thenResponseIsCorrect() throws Exception {
 
 
         mvc.perform(get("/")

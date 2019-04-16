@@ -1,7 +1,7 @@
 package ch.hearc.smb.repository;
 
-
 import ch.hearc.smb.model.Board;
+import ch.hearc.smb.model.Comment;
 import ch.hearc.smb.model.CustomUser;
 import ch.hearc.smb.model.Post;
 import org.junit.Test;
@@ -13,21 +13,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class PostRepositoryTest {
+public class CommentRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private PostRepository postRepository;
+    private CommentRepository commentRepository;
 
     @Test
-    public void testPost() {
+    public void testComment() {
         Board board = new Board();
         board.setName("test board");
         board.setDescription("test description");
@@ -52,15 +52,21 @@ public class PostRepositoryTest {
         entityManager.persist(post);
         entityManager.flush();
 
-        Optional<Post> postRecherche = postRepository.findById(post.getId());
+        Comment comment = new Comment();
+        comment.setContent("test content");
+        comment.setPost(post);
+        comment.setUser(user);
 
-        assertTrue(postRecherche.isPresent());
-        assertTrue(postRecherche.get().getId().equals(post.getId()));
-        assertTrue(postRecherche.get().getName().equals(post.getName()));
-        assertTrue(postRecherche.get().getContent().equals(post.getContent()));
-        assertTrue(postRecherche.get().getBoard().equals(post.getBoard()));
-        assertTrue(postRecherche.get().getUser().equals(post.getUser()));
-        assertThat(postRecherche.get()).isNotNull();
+        entityManager.persist(comment);
+        entityManager.flush();
 
+        Optional<Comment> commentRecherche = commentRepository.findById(comment.getId());
+
+        assertTrue(commentRecherche.isPresent());
+        assertTrue(commentRecherche.get().getId().equals(comment.getId()));
+        assertTrue(commentRecherche.get().getContent().equals(comment.getContent()));
+        assertTrue(commentRecherche.get().getPost().equals(comment.getPost()));
+        assertTrue(commentRecherche.get().getUser().equals(comment.getUser()));
+        assertThat(commentRecherche.get()).isNotNull();
     }
 }

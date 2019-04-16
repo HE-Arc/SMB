@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Board {
@@ -74,5 +75,10 @@ public class Board {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+    public boolean equals(Object board) {
+        if (board == this) { return true; }
+        if (!(board instanceof Board)) { return false; }
+        return Objects.equals(this.id, ((Board) board).id);
     }
 }

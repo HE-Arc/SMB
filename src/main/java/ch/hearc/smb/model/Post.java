@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Post {
@@ -142,5 +143,11 @@ public class Post {
     @Override
     public String toString() {
         return name;
+    }
+
+    public boolean equals(Object post) {
+        if (post == this) { return true; }
+        if (!(post instanceof Post)) { return false; }
+        return Objects.equals(this.id, ((Post) post).id);
     }
 }

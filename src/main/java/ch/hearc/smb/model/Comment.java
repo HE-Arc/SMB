@@ -4,16 +4,13 @@ import ch.hearc.smb.helper.ManageDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-
-
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Comment {
@@ -97,6 +94,12 @@ public class Comment {
 
     public String getDateDisplay() {
         return ManageDate.getInstance().dateFromDBToDisplay(createdDate);
+    }
+
+    public boolean equals(Object comment) {
+        if (comment == this) { return true; }
+        if (!(comment instanceof Comment)) { return false; }
+        return Objects.equals(this.id, ((Comment) comment).id);
     }
 
 }

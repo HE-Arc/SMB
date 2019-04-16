@@ -72,7 +72,7 @@ public class AdminController {
         }
 
         CustomUser user = customUserService.findByCustomId(id);
-        user.setRoles(roles);
+        user.setRole(roles);
         customUserService.save(user);
         return "redirect:/admin?user=" + user.getUsername() + "&search=" + search;
     }

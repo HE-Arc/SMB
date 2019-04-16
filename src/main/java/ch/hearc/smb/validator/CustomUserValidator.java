@@ -48,11 +48,11 @@ public class CustomUserValidator implements Validator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", PARAM_NOTEMPTY);
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
-            errors.rejectValue("pwdE", "Size.userForm.password");
+            errors.rejectValue("password", "Size.userForm.password");
         }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
-            errors.rejectValue("pwdConfirm", "Diff.userForm.passwordConfirm");
+            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
     }
 
