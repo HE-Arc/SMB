@@ -9,7 +9,6 @@ import ch.hearc.smb.service.CommentService;
 import ch.hearc.smb.service.CustomUserService;
 import ch.hearc.smb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,9 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/posts")
@@ -51,14 +47,6 @@ public class PostController {
         Post post = postService.find(id);
         model.addAttribute("post", post);
         model.addAttribute("postDate", post.getDateDisplay());
-        Page<Comment> comments = commentService.getAllPostByDesc(post.getId(), pageable);
-        model.addAttribute("comments", comments);
-        List<String> commentDates = comments.stream().map(Comment::getDateDisplay).collect(Collectors.toList());
-        model.addAttribute("commentDates", commentDates);
-        List<String> customUsers = comments.stream().map(c -> c.getUser().getUsername()).collect(Collectors.toList());
-        model.addAttribute("customUsers", customUsers);
-        List<Long> idUser = comments.stream().map(c -> c.getUser().getId()).collect(Collectors.toList());
-        model.addAttribute("idUser", idUser);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUser actualUser = customUserDetailsService.findByCustomusername(authentication.getName());
         model.addAttribute("currentUser", actualUser);
