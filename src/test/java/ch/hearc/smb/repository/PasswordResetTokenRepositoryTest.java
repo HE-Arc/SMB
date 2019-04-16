@@ -46,7 +46,7 @@ public class PasswordResetTokenRepositoryTest {
         Optional<PasswordResetToken> roleRecherche = passwordResetTokenRepository.findById(passwordResetToken.getId());
 
         assertTrue(roleRecherche.isPresent());
-        assertTrue(roleRecherche.get().getId().equals(user.getId()));
+        assertTrue(roleRecherche.get().getId().equals(passwordResetToken.getId()));
         assertTrue(roleRecherche.get().getToken().equals(passwordResetToken.getToken()));
         assertTrue(roleRecherche.get().getExpiryDate().equals(passwordResetToken.getExpiryDate()));
         assertTrue(roleRecherche.get().getUser().equals(passwordResetToken.getUser()));

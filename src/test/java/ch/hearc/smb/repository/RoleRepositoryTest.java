@@ -50,7 +50,7 @@ public class RoleRepositoryTest {
         Optional<Role> roleRecherche = roleRepository.findById(role.getId());
 
         assertTrue(roleRecherche.isPresent());
-        assertTrue(roleRecherche.get().getId().equals(user.getId()));
+        assertTrue(roleRecherche.get().getId().equals(role.getId()));
         assertTrue(roleRecherche.get().getName().equals(role.getName()));
         assertTrue(roleRecherche.get().getCustomUsers().equals(role.getCustomUsers()));
         assertThat(roleRecherche.get()).isNotNull();
