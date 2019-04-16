@@ -53,13 +53,6 @@ public class RegisterControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        mvc.perform(post("/register")
-                .param("username", "test")
-                .param("email", "test@test.com")
-                .param("password", "123456789")
-                .param("passwordConfirm", "123456789").with(csrf()))
-                .andExpect(status().isOk())
-                .andReturn();
 
     }
 

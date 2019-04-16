@@ -33,8 +33,8 @@ public class Comment {
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
-    @OnDelete(action=OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JsonIgnore
     private CustomUser user;
 
@@ -97,14 +97,18 @@ public class Comment {
     }
 
     public boolean equals(Object comment) {
-        if (comment == this) { return true; }
-        if (!(comment instanceof Comment)) { return false; }
+        if (comment == this) {
+            return true;
+        }
+        if (!(comment instanceof Comment)) {
+            return false;
+        }
         return Objects.equals(this.id, ((Comment) comment).id);
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return content.hashCode() * createdDate.hashCode();
     }
 
 }
