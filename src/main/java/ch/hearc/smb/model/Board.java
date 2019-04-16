@@ -81,4 +81,9 @@ public class Board {
         if (!(board instanceof Board)) { return false; }
         return Objects.equals(this.id, ((Board) board).id);
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

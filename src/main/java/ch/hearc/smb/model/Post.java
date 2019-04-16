@@ -150,4 +150,9 @@ public class Post {
         if (!(post instanceof Post)) { return false; }
         return Objects.equals(this.id, ((Post) post).id);
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

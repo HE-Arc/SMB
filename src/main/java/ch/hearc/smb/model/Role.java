@@ -57,4 +57,5 @@ public class Role {
         if (!(o instanceof Role) ) { return false; }
         return Objects.equals(this.name, ((Role) o).name);
     }
+
 }

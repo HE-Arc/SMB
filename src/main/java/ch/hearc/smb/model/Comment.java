@@ -102,4 +102,9 @@ public class Comment {
         return Objects.equals(this.id, ((Comment) comment).id);
     }
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
 }

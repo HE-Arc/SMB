@@ -83,4 +83,8 @@ public class PasswordResetToken {
         return new Date(cal.getTime().getTime());
     }
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
