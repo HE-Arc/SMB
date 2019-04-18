@@ -15,7 +15,7 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://192.168.1.45:9090/')
+WebUI.navigateToUrl('http://127.0.0.1:9090/')
 
 WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/a_Boards'))
 

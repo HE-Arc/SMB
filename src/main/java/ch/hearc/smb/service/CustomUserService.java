@@ -23,6 +23,7 @@ public class CustomUserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void save(CustomUser customUser) {
+        customUser.setPassword(bCryptPasswordEncoder.encode(customUser.getPassword()));
         customUserRepository.save(customUser);
     }
 
