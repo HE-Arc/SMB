@@ -17,11 +17,11 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://192.168.1.45:9090/')
 
-WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/a_Login'))
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/a_Boards'))
 
-WebUI.setText(findTestObject('Page_Spring Boot Thymeleaf/input_Username_username'), 'steven23')
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/td_Board to talk about Python programming'))
 
-WebUI.setEncryptedText(findTestObject('Page_Spring Boot Thymeleaf/input_Password_password'), 'V2rEZwedbz+j4vx1UWuf6w==')
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/td_Help with Python'))
 
-WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/button_Log In'))
+WebUI.closeBrowser()
 
