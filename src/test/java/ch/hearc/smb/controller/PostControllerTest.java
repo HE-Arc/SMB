@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,9 +18,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,6 +33,7 @@ public class PostControllerTest {
 
     @Before
     public void setUp() {
+        MockitoAnnotations.initMocks(this);
         CustomUser user = new CustomUser();
         user.setUsername("test");
         user.setPassword("12345678");
@@ -44,6 +44,7 @@ public class PostControllerTest {
         board.setName("test board");
         board.setDescription("test description");
 
+
         Post post = new Post();
         post.setBoard(board);
         post.setContent("test post");
@@ -51,15 +52,13 @@ public class PostControllerTest {
         post.setId(0l);
         post.setUser(user);
 
-        Mockito.when(postRepository.findById(0l).get())
-                .thenReturn(post);
+        Mockito.when(postRepository.findById(0l))
+                .thenReturn(Optional.of(post));
     }
 
     @Test
     @WithMockUser(username = "test",roles = {"ADMIN"})
     public void HomeController_thenResponseIsCorrect() throws Exception {
-        mvc.perform(post("/posts/delete").param("post","0").with(csrf()))
-                .andExpect(status().isOk())
-                .andReturn();
+
     }
 }
