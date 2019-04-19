@@ -13,15 +13,3 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.openBrowser('')
-
-WebUI.navigateToUrl('http://127.0.0.1:9090/')
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/a_Boards'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/td_Board to talk about Python programming'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/Page_Spring Boot Thymeleaf/td_Help with Python'))
-
-WebUI.closeBrowser()
-

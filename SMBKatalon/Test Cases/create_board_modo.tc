@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>t</name>
+   <name>create_board_modo</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>a1a9f1bc-2b7d-434f-85b2-8da0c16f8a0e</testCaseGuid>
+   <testCaseGuid>163f82a5-69df-4102-9ef3-9f8c925191e1</testCaseGuid>
 </TestCaseEntity>

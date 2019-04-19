@@ -1,0 +1,8 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+smb,,,2019-04-19 14:26:13,2019-04-19 14:26:15,2.727s,FAILED
+,,,,,,
+Test Cases/login,,,2019-04-19 14:26:13,2019-04-19 14:26:15,1.381s,FAILED
+"openBrowser("""")",,,2019-04-19 14:26:14,2019-04-19 14:26:15,0.574s,FAILED
+,,,,,,
+Test Cases/create_board_modo,,,2019-04-19 14:26:15,2019-04-19 14:26:15,0.766s,FAILED
+"openBrowser("""")",,,2019-04-19 14:26:15,2019-04-19 14:26:15,0.026s,FAILED

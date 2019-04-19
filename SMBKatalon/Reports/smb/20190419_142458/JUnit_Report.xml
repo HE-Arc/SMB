@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="smb" time="17" tests="1" failures="0" errors="1">
+   <testsuite name="smb" tests="1" failures="0" errors="1" time="17" timestamp="2019-04-19 14:25:02" hostname="charlesl.jaggi - INF16-JAGGIC.intra.eiaj.ch" id="Test Suites/smb">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\smb\\20190419_142458"/>
+         <property name="logFiles" value="C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\smb\\20190419_142458\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="charlesl.jaggi - INF16-JAGGIC.intra.eiaj.ch"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.1.1.1"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="157.26.66.39"/>
+         <property name="sessionId" value="a3371f57a522d0a07503a5d9c6b7abb5"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/login" classname="Test Cases/login" status="PASSED">
+         <system-out><![CDATA[2019-04-19 14:25:03 - [TEST_CASE][PASSED] - Test Cases/login: Test Cases/login
+
+2019-04-19 14:25:03 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-19 14:25:04 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-19 14:25:04 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-04-19 14:25:10 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-19 14:25:10 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-19 14:25:11 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-19 14:25:11 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-19 14:25:12 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-19 14:25:12 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Spring Boot Thymeleaf/input_Username_username"), "steven23"): Text 'steven23' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-19 14:25:12 - [MESSAGE][PASSED] - Text 'steven23' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-19 14:25:12 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Spring Boot Thymeleaf/input_Password_password"), "V2rEZwedbz+j4vx1UWuf6w=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-19 14:25:12 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-19 14:25:12 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-19 14:25:13 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/create_board_modo" classname="Test Cases/create_board_modo" status="ERROR">
+         <error type="ERROR" message="Test Cases/create_board_modo FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)
+"/>
+         <system-out><![CDATA[2019-04-19 14:25:13 - [TEST_CASE][ERROR] - Test Cases/create_board_modo: Test Cases/create_board_modo FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)
+
+
+2019-04-19 14:25:14 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-19 14:25:14 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-19 14:25:14 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-19 14:25:17 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-19 14:25:17 - [TEST_STEP][PASSED] - navigateToUrl("http://panama.internet-box.ch:9090/boards"): Navigate to 'http://panama.internet-box.ch:9090/boards' successfully
+
+2019-04-19 14:25:18 - [MESSAGE][PASSED] - Navigate to 'http://panama.internet-box.ch:9090/boards' successfully
+
+2019-04-19 14:25:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-19 14:25:19 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-19 14:25:19 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "lewislewis"): Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-19 14:25:19 - [MESSAGE][PASSED] - Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-19 14:25:19 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-19 14:25:19 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-19 14:25:19 - [TEST_STEP][ERROR] - sendKeys(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), Keys.chord(ENTER)): sendKeys(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), Keys.chord(ENTER)) FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)
+
+
+2019-04-19 14:25:19 - [MESSAGE][ERROR] - sendKeys(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), Keys.chord(ENTER)) FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)]]></system-out>
+         <system-err><![CDATA[2019-04-19 14:25:13 - [TEST_CASE][ERROR] - Test Cases/create_board_modo: Test Cases/create_board_modo FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-04-19 14:25:02 - [TEST_SUITE][ERROR] - smb: Test Cases/create_board_modo FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)]]></system-out>
+      <system-err><![CDATA[2019-04-19 14:25:02 - [TEST_SUITE][ERROR] - smb: Test Cases/create_board_modo FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1555676434106
+	at create_board_modo.run(create_board_modo:26)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:342)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:333)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:312)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:304)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:238)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1555676698751.run(TempTestSuite1555676698751.groovy:35)]]></system-err>
+   </testsuite>
+</testsuites>
