@@ -28,8 +28,8 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.c
 
 
 
-RunConfiguration.setExecutionSettingFile("C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\smb\\20190419_142458\\execution.properties")
+RunConfiguration.setExecutionSettingFile("C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\smb\\20190419_143437\\execution.properties")
 
 TestCaseMain.beforeStart()
 
-TestCaseMain.startTestSuite('Test Suites/smb', suiteProperties, [new TestCaseBinding('Test Cases/login', 'Test Cases/login',  null), new TestCaseBinding('Test Cases/create_board_modo', 'Test Cases/create_board_modo',  null)])
+TestCaseMain.startTestSuite('Test Suites/smb', suiteProperties, [new TestCaseBinding('Test Cases/login', 'Test Cases/login',  null), new TestCaseBinding('Test Cases/create_board_modo', 'Test Cases/create_board_modo',  null), new TestCaseBinding('Test Cases/NavBar', 'Test Cases/NavBar',  null)])

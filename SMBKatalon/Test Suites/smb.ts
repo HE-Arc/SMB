@@ -22,4 +22,10 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/create_board_modo</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>6e31abe5-a82b-404b-9dbc-1bf563e600a7</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/NavBar</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

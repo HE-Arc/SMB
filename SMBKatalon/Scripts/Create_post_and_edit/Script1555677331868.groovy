@@ -13,25 +13,3 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.openBrowser('')
-
-WebUI.navigateToUrl('http://127.0.0.1:9090/')
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Login'))
-
-WebUI.setText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'), 'lewislewis')
-
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'), 'eWrmvIvEgHHUCGRVcsPJcw==')
-
-WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/button_Log In'), FailureHandling.STOP_ON_FAILURE)
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_SMB'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Boards'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Admin'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Logout'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Register'))
-

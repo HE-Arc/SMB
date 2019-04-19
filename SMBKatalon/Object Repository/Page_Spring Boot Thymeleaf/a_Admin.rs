@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_Login</name>
+   <name>a_Admin</name>
    <tag></tag>
-   <elementGuidId>dd6a0ffe-feec-40c7-a81a-67445c98b3aa</elementGuidId>
+   <elementGuidId>b31ff08f-8811-4284-95fa-29100b288813</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbar']/div/a</value>
+         <value>//div[@id='navbar']/ul/li[2]/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -20,6 +20,13 @@
       <value>a</value>
    </webElementProperties>
    <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/admin</value>
+   </webElementProperties>
+   <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
@@ -29,35 +36,28 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>href</name>
-      <type>Main</type>
-      <value>/login</value>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Login</value>
+      <value>Admin </value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbar&quot;)/div[@class=&quot;ml-auto&quot;]/a[@class=&quot;navbar-link&quot;]</value>
+      <value>id(&quot;navbar&quot;)/ul[@class=&quot;navbar-nav&quot;]/li[@class=&quot;nav-item&quot;]/a[@class=&quot;navbar-link&quot;]</value>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
-      <value>//div[@id='navbar']/div/a</value>
+      <value>//div[@id='navbar']/ul/li[2]/a</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:link</name>
-      <value>//a[contains(text(),'Login')]</value>
+      <value>//a[contains(text(),'Admin')]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -75,30 +75,24 @@
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Register'])[1]/preceding::a[1]</value>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Boards'])[2]/preceding::a[2]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Welcome on SMB'])[1]/preceding::a[2]</value>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Name'])[1]/preceding::a[2]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
-      <value>//a[contains(@href, '/login')]</value>
+      <value>//a[contains(@href, '/admin')]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
-      <value>//div/a</value>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Boards'])[2]/preceding::a[2]</value>
+      <value>//li[2]/a</value>
    </webElementXpaths>
 </WebElementEntity>

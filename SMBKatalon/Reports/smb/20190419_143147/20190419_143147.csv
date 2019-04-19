@@ -1,0 +1,24 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+smb,Chrome 73.0.3683.103,,2019-04-19 14:31:50,2019-04-19 14:32:09,18.330s,PASSED
+,,,,,,
+Test Cases/login,Chrome 73.0.3683.103,,2019-04-19 14:31:51,2019-04-19 14:32:00,8.939s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-04-19 14:31:52,2019-04-19 14:31:58,6.073s,PASSED
+"navigateToUrl(""http://127.0.0.1:9090/"")",Chrome 73.0.3683.103,,2019-04-19 14:31:58,2019-04-19 14:31:59,1.006s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/a_Login""))",Chrome 73.0.3683.103,,2019-04-19 14:31:59,2019-04-19 14:31:59,0.249s,PASSED
+"setText(findTestObject(""Page_Spring Boot Thymeleaf/input_Username_username""), ""steven23"")",Chrome 73.0.3683.103,,2019-04-19 14:31:59,2019-04-19 14:31:59,0.142s,PASSED
+"setEncryptedText(findTestObject(""Page_Spring Boot Thymeleaf/input_Password_password""), ""V2rEZwedbz+j4vx1UWuf6w=="")",Chrome 73.0.3683.103,,2019-04-19 14:31:59,2019-04-19 14:31:59,0.191s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/button_Log In""))",Chrome 73.0.3683.103,,2019-04-19 14:31:59,2019-04-19 14:32:00,0.463s,PASSED
+,,,,,,
+Test Cases/create_board_modo,Chrome 73.0.3683.103,,2019-04-19 14:32:00,2019-04-19 14:32:09,8.841s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-04-19 14:32:01,2019-04-19 14:32:05,4.197s,PASSED
+"navigateToUrl(""http://127.0.0.1:9090/boards"")",Chrome 73.0.3683.103,,2019-04-19 14:32:05,2019-04-19 14:32:06,1.032s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/a_Login""))",Chrome 73.0.3683.103,,2019-04-19 14:32:06,2019-04-19 14:32:06,0.166s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Username_username""), ""lewislewis"")",Chrome 73.0.3683.103,,2019-04-19 14:32:06,2019-04-19 14:32:06,0.119s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Password_password""), ""eWrmvIvEgHHUCGRVcsPJcw=="")",Chrome 73.0.3683.103,,2019-04-19 14:32:06,2019-04-19 14:32:06,0.122s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/button_Log In""), STOP_ON_FAILURE)",Chrome 73.0.3683.103,,2019-04-19 14:32:06,2019-04-19 14:32:07,0.487s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/a_Boards""))",Chrome 73.0.3683.103,,2019-04-19 14:32:07,2019-04-19 14:32:07,0.421s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/i_Description_fas fa-plus""))",Chrome 73.0.3683.103,,2019-04-19 14:32:07,2019-04-19 14:32:07,0.196s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name""), ""test"")",Chrome 73.0.3683.103,,2019-04-19 14:32:07,2019-04-19 14:32:07,0.102s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/textarea_Board description_description""), ""test"")",Chrome 73.0.3683.103,,2019-04-19 14:32:07,2019-04-19 14:32:07,0.103s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/button_Save""))",Chrome 73.0.3683.103,,2019-04-19 14:32:07,2019-04-19 14:32:08,0.685s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-04-19 14:32:08,2019-04-19 14:32:09,0.592s,PASSED
