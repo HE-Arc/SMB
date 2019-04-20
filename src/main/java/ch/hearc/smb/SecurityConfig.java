@@ -48,6 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/posts/{id}/delete").authenticated()
                 .antMatchers(HttpMethod.POST, "/comments").authenticated()
                 .antMatchers("/comments/{id}/delete").authenticated()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/register").anonymous()
                 .and()
                 .formLogin().loginPage("/login");
     }
