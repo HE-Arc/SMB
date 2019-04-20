@@ -35,7 +35,7 @@ pipeline {
                 unstash "app"
                 sh 'java -jar target/SMF-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &'
                 sh 'sleep 30'
-			    sh '(/Katalon_Studio_Linux_64-5.7.1/katalon -noSplash  -runMode=console -projectPath="$(pwd)/SMBKatalon/SMBKatalon.prj" -retry=0 -testSuitePath="Test Suites/full_test" -executionProfile="default" -browserType="Web Service")'
+			    sh '(/Katalon_Studio_Linux_64-5.7.1/katalon -noSplash  -runMode=console -projectPath="$(pwd)/SMBKatalon/SMBKatalon.prj" -retry=0 -testSuitePath="Test Suites/full_test" -executionProfile="default"  -browserType="Chrome (headless)" -Djava.awt.headless)'
 			    cleanWs()
             }
             post {
