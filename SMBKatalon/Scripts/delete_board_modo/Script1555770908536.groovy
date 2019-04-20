@@ -17,11 +17,17 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://127.0.0.1:9090/')
 
-WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/a_Login'))
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Login'))
 
-WebUI.setText(findTestObject('Page_Spring Boot Thymeleaf/input_Username_username'), 'steven23')
+WebUI.setText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'), 'lewislewis')
 
-WebUI.setEncryptedText(findTestObject('Page_Spring Boot Thymeleaf/input_Password_password'), 'V2rEZwedbz+j4vx1UWuf6w==')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'), 'eWrmvIvEgHHUCGRVcsPJcw==')
 
-WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/button_Log In'))
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/button_Log In'))
+
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Boards'))
+
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/i_test edit_fas fa-trash'))
+
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Logout'))
 
