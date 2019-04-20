@@ -11,10 +11,15 @@ import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -22,6 +27,7 @@ import java.util.UUID;
 
 
 @Controller
+@EnableAsync
 public class RegisterController {
 
     @Autowired
@@ -80,9 +86,7 @@ public class RegisterController {
             return "redirect:/forgotpassword?error";
         }
 
-        String token = UUID.randomUUID().toString();
-        customUserService.createPasswordResetTokenForUser(user, token);
-        mailSender.send(constructResetTokenEmail(env.getProperty("spring.application.url"), request.getLocale(), token, user));
+        sendMail(user, request.getLocale());
 
         return "redirect:/forgotpassword?ok";
     }
@@ -145,6 +149,13 @@ public class RegisterController {
         email.setTo(user.getEmail());
         email.setFrom("SMB");
         return email;
+    }
+
+    @Async
+    public void sendMail(CustomUser user, Locale locale){
+        String token = UUID.randomUUID().toString();
+        customUserService.createPasswordResetTokenForUser(user, token);
+        mailSender.send(constructResetTokenEmail(env.getProperty("spring.application.url"), locale, token, user));
     }
 
 }
