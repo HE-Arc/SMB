@@ -13,5 +13,16 @@ pipeline {
                 stash name: "app", includes: "**"
             }
         }
+		stage('Katalon') {
+		     agent {
+              docker {
+               image 'maven:3-alpine'
+              }
+            }
+            steps {
+			    sh '(java -jar target/SMF-0.0.1-SNAPSHOT.jar &)'
+			    sh '(katalon -noSplash  -runMode=console -projectPath="SMBKatalon/SMBKatalon.prj" -retry=0 -testSuitePath="Test Suites/full_test" -executionProfile="default" -browserType="Web Service")'
+            }
+        }
     }
 }
