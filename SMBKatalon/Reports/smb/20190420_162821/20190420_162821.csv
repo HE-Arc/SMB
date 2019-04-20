@@ -1,0 +1,30 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+smb,Chrome 73.0.3683.103,,2019-04-20 16:28:25,2019-04-20 16:28:45,19.894s,PASSED
+,,,,,,
+Test Cases/create_board_modo,Chrome 73.0.3683.103,,2019-04-20 16:28:26,2019-04-20 16:28:37,11.177s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-04-20 16:28:26,2019-04-20 16:28:33,6.396s,PASSED
+"navigateToUrl(""http://127.0.0.1:9090/boards"")",Chrome 73.0.3683.103,,2019-04-20 16:28:33,2019-04-20 16:28:34,0.981s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/a_Login""))",Chrome 73.0.3683.103,,2019-04-20 16:28:34,2019-04-20 16:28:34,0.253s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Username_username""), ""lewislewis"")",Chrome 73.0.3683.103,,2019-04-20 16:28:34,2019-04-20 16:28:34,0.155s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Password_password""), ""eWrmvIvEgHHUCGRVcsPJcw=="")",Chrome 73.0.3683.103,,2019-04-20 16:28:34,2019-04-20 16:28:34,0.204s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/button_Log In""), STOP_ON_FAILURE)",Chrome 73.0.3683.103,,2019-04-20 16:28:34,2019-04-20 16:28:35,0.443s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/a_Boards""))",Chrome 73.0.3683.103,,2019-04-20 16:28:35,2019-04-20 16:28:35,0.471s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/i_Description_fas fa-plus""))",Chrome 73.0.3683.103,,2019-04-20 16:28:35,2019-04-20 16:28:35,0.162s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name""), ""test"")",Chrome 73.0.3683.103,,2019-04-20 16:28:35,2019-04-20 16:28:36,0.114s,PASSED
+"setText(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/textarea_Board description_description""), ""test"")",Chrome 73.0.3683.103,,2019-04-20 16:28:36,2019-04-20 16:28:36,0.118s,PASSED
+"click(findTestObject(""Object Repository/Page_Spring Boot Thymeleaf/button_Save""))",Chrome 73.0.3683.103,,2019-04-20 16:28:36,2019-04-20 16:28:36,0.418s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-04-20 16:28:36,2019-04-20 16:28:37,0.617s,PASSED
+,,,,,,
+Test Cases/edit_board_modo,Chrome 73.0.3683.103,,2019-04-20 16:28:37,2019-04-20 16:28:44,7.522s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-04-20 16:28:37,2019-04-20 16:28:41,3.620s,PASSED
+"navigateToUrl(""http://127.0.0.1:9090/"")",Chrome 73.0.3683.103,,2019-04-20 16:28:41,2019-04-20 16:28:42,0.835s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/a_Login""))",Chrome 73.0.3683.103,,2019-04-20 16:28:42,2019-04-20 16:28:42,0.189s,PASSED
+"setText(findTestObject(""Page_Spring Boot Thymeleaf/input_Username_username""), ""lewislewis"")",Chrome 73.0.3683.103,,2019-04-20 16:28:42,2019-04-20 16:28:42,0.130s,PASSED
+"setEncryptedText(findTestObject(""Page_Spring Boot Thymeleaf/input_Password_password""), ""eWrmvIvEgHHUCGRVcsPJcw=="")",Chrome 73.0.3683.103,,2019-04-20 16:28:42,2019-04-20 16:28:42,0.132s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/button_Log In""))",Chrome 73.0.3683.103,,2019-04-20 16:28:42,2019-04-20 16:28:43,0.435s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/a_Boards""))",Chrome 73.0.3683.103,,2019-04-20 16:28:43,2019-04-20 16:28:43,0.429s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/i_test_fas fa-pen""))",Chrome 73.0.3683.103,,2019-04-20 16:28:43,2019-04-20 16:28:43,0.298s,PASSED
+"setText(findTestObject(""Page_Spring Boot Thymeleaf/input_Board name_name""), ""test edit"")",Chrome 73.0.3683.103,,2019-04-20 16:28:43,2019-04-20 16:28:44,0.125s,PASSED
+"setText(findTestObject(""Page_Spring Boot Thymeleaf/textarea_test""), ""test edit"")",Chrome 73.0.3683.103,,2019-04-20 16:28:44,2019-04-20 16:28:44,0.134s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/button_Save""))",Chrome 73.0.3683.103,,2019-04-20 16:28:44,2019-04-20 16:28:44,0.402s,PASSED
+"click(findTestObject(""Page_Spring Boot Thymeleaf/a_Logout""))",Chrome 73.0.3683.103,,2019-04-20 16:28:44,2019-04-20 16:28:44,0.142s,PASSED

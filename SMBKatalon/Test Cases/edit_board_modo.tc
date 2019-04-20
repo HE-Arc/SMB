@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Create_post_and_edit</name>
+   <name>edit_board_modo</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>0f368b75-df33-4214-b5aa-8cd9e94a2ef7</testCaseGuid>
+   <testCaseGuid>4ac0b424-0e5d-4ad9-9904-f552621fdb89</testCaseGuid>
 </TestCaseEntity>

@@ -15,9 +15,9 @@ import internal.GlobalVariable as GlobalVariable
 Map<String, String> suiteProperties = new HashMap<String, String>();
 
 
-suiteProperties.put('id', 'Test Suites/smb')
+suiteProperties.put('id', 'Test Suites/full_test')
 
-suiteProperties.put('name', 'smb')
+suiteProperties.put('name', 'full_test')
 
 suiteProperties.put('description', '')
  
@@ -28,8 +28,8 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.c
 
 
 
-RunConfiguration.setExecutionSettingFile("C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\smb\\20190419_143437\\execution.properties")
+RunConfiguration.setExecutionSettingFile("C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\full_test\\20190420_163628\\execution.properties")
 
 TestCaseMain.beforeStart()
 
-TestCaseMain.startTestSuite('Test Suites/smb', suiteProperties, [new TestCaseBinding('Test Cases/login', 'Test Cases/login',  null), new TestCaseBinding('Test Cases/create_board_modo', 'Test Cases/create_board_modo',  null), new TestCaseBinding('Test Cases/NavBar', 'Test Cases/NavBar',  null)])
+TestCaseMain.startTestSuite('Test Suites/full_test', suiteProperties, [new TestCaseBinding('Test Cases/create_board_modo', 'Test Cases/create_board_modo',  null), new TestCaseBinding('Test Cases/edit_board_modo', 'Test Cases/edit_board_modo',  null), new TestCaseBinding('Test Cases/create_post_user', 'Test Cases/create_post_user',  null), new TestCaseBinding('Test Cases/create_comment_user', 'Test Cases/create_comment_user',  null), new TestCaseBinding('Test Cases/delete_comment_user', 'Test Cases/delete_comment_user',  null), new TestCaseBinding('Test Cases/delete_post_user', 'Test Cases/delete_post_user',  null), new TestCaseBinding('Test Cases/delete_board_modo', 'Test Cases/delete_board_modo',  null)])

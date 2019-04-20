@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Save</name>
+   <name>button_Comment</name>
    <tag></tag>
-   <elementGuidId>b5744158-1598-48ca-a217-838c8536d88c</elementGuidId>
+   <elementGuidId>49d7990e-bf94-46ba-bdd6-5033e300f9e5</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
@@ -31,21 +31,21 @@
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn btn-primary float-right</value>
+      <value>btn btn-primary</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Save</value>
+      <value>Comment</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[1]/div[@class=&quot;container mt-5&quot;]/form[1]/button[@class=&quot;btn btn-primary float-right&quot;]</value>
+      <value>/html[1]/body[1]/div[@class=&quot;container border border-secondary rounded my-3 pb-3 whiteBackground&quot;]/div[@class=&quot;border borderCustom rounded my-3 p-2&quot;]/form[1]/div[@class=&quot;text-right&quot;]/button[@class=&quot;btn btn-primary&quot;]</value>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -57,24 +57,24 @@
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='test'])[1]/following::button[1]</value>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Default content'])[2]/following::button[1]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Board description'])[1]/following::button[1]</value>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='#'])[1]/following::button[1]</value>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Show more'])[1]/preceding::button[1]</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
-      <value>//form/button</value>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Board name'])[1]/following::button[1]</value>
+      <value>//form/div[2]/button</value>
    </webElementXpaths>
 </WebElementEntity>
