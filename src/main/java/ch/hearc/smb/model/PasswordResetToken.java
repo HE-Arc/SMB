@@ -3,6 +3,7 @@ package ch.hearc.smb.model;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class PasswordResetToken {
@@ -81,6 +82,13 @@ public class PasswordResetToken {
         cal.setTimeInMillis(new Date().getTime());
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) {return true;}
+        if(!(o instanceof PasswordResetToken)) { return false;}
+        return Objects.equals(this.id, ((PasswordResetToken)o).id);
     }
 
     @Override
