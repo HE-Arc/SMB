@@ -56,7 +56,7 @@ public class SecurityService {
 				passwordResetTokenRepository.findByToken(token);
 		if ((passToken == null) || (passToken.getUser()
 				.getId() != id)) {
-			return "invalidToken";
+			return "invalidtoken";
 		}
 
 		Calendar cal = Calendar.getInstance();
