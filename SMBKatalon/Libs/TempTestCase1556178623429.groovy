@@ -14,9 +14,9 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.m
 DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.cucumber.keyword.internal.CucumberDriverCleaner())
 
 
-RunConfiguration.setExecutionSettingFile('C:\\Users\\CHARLE~1.JAG\\AppData\\Local\\Temp\\Katalon\\Test Cases\\Create_post_and_edit_usermode\\20190420_160434\\execution.properties')
+RunConfiguration.setExecutionSettingFile('C:\\Users\\CHARLE~1.JAG\\AppData\\Local\\Temp\\Katalon\\Test Cases\\create_post_user\\20190425_095023\\execution.properties')
 
 TestCaseMain.beforeStart()
 
-        TestCaseMain.runTestCase('Test Cases/Create_post_and_edit_usermode', new TestCaseBinding('Test Cases/Create_post_and_edit_usermode',[:]), FailureHandling.STOP_ON_FAILURE , false)
+        TestCaseMain.runTestCase('Test Cases/create_post_user', new TestCaseBinding('Test Cases/create_post_user',[:]), FailureHandling.STOP_ON_FAILURE , false)
     

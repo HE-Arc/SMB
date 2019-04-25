@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="full_test" time="69" tests="7" failures="0" errors="0">
+   <testsuite name="full_test" tests="7" failures="0" errors="0" time="69" timestamp="2019-04-25 09:26:32" hostname="charlesl.jaggi - INF16-JAGGIC.mshome.net" id="Test Suites/full_test">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\full_test\\20190425_092628"/>
+         <property name="logFiles" value="C:\\dev\\jee\\SMB\\SMBKatalon\\Reports\\full_test\\20190425_092628\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="charlesl.jaggi - INF16-JAGGIC.mshome.net"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.1.1.1"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="172.18.178.209"/>
+         <property name="sessionId" value="2343a8a888e703d2f72187db98fd9fa8"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/create_board_modo" classname="Test Cases/create_board_modo" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:26:32 - [TEST_CASE][PASSED] - Test Cases/create_board_modo: Test Cases/create_board_modo
+
+2019-04-25 09:26:33 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:26:33 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:26:33 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-04-25 09:26:40 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:26:40 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/boards"): Navigate to 'http://127.0.0.1:9090/boards' successfully
+
+2019-04-25 09:26:52 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/boards' successfully
+
+2019-04-25 09:26:52 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:26:53 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:26:53 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "lewislewis"): Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:26:53 - [MESSAGE][PASSED] - Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:26:53 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:26:53 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:26:53 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Log In"), STOP_ON_FAILURE): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:26:53 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:26:53 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:26:54 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:26:54 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/i_Description_fas fa-plus")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Description_fas fa-plus' is clicked on
+
+2019-04-25 09:26:54 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Description_fas fa-plus' is clicked on
+
+2019-04-25 09:26:54 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name"), "test"): Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name'
+
+2019-04-25 09:26:54 - [MESSAGE][PASSED] - Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name'
+
+2019-04-25 09:26:54 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/textarea_Board description_description"), "test"): Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/textarea_Board description_description'
+
+2019-04-25 09:26:54 - [MESSAGE][PASSED] - Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/textarea_Board description_description'
+
+2019-04-25 09:26:54 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Save")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Save' is clicked on
+
+2019-04-25 09:26:54 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Save' is clicked on
+
+2019-04-25 09:26:54 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-04-25 09:26:55 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/edit_board_modo" classname="Test Cases/edit_board_modo" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:26:55 - [TEST_CASE][PASSED] - Test Cases/edit_board_modo: Test Cases/edit_board_modo
+
+2019-04-25 09:26:55 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:26:55 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:26:59 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:26:59 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:00 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:00 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:00 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:00 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Spring Boot Thymeleaf/input_Username_username"), "lewislewis"): Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:00 - [MESSAGE][PASSED] - Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:00 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:00 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:00 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:00 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:00 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:01 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:01 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/i_test_fas fa-pen")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test_fas fa-pen' is clicked on
+
+2019-04-25 09:27:01 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test_fas fa-pen' is clicked on
+
+2019-04-25 09:27:01 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Spring Boot Thymeleaf/input_Board name_name"), "test edit"): Text 'test edit' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name'
+
+2019-04-25 09:27:01 - [MESSAGE][PASSED] - Text 'test edit' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Board name_name'
+
+2019-04-25 09:27:01 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Spring Boot Thymeleaf/textarea_test"), "test edit"): Text 'test edit' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/textarea_test'
+
+2019-04-25 09:27:01 - [MESSAGE][PASSED] - Text 'test edit' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/textarea_test'
+
+2019-04-25 09:27:01 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Save")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Save' is clicked on
+
+2019-04-25 09:27:01 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Save' is clicked on
+
+2019-04-25 09:27:01 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:02 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/create_post_user" classname="Test Cases/create_post_user" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:27:02 - [TEST_CASE][PASSED] - Test Cases/create_post_user: Test Cases/create_post_user
+
+2019-04-25 09:27:02 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:27:02 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-25 09:27:03 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:27:06 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:27:06 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:07 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:07 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:07 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:07 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "ploucplouc12"): Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:07 - [MESSAGE][PASSED] - Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:07 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:07 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:07 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Log In"), STOP_ON_FAILURE): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:08 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:08 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:08 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:08 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/td_test edit")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:08 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:08 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/i_Last modified_fas fa-plus")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Last modified_fas fa-plus' is clicked on
+
+2019-04-25 09:27:08 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Last modified_fas fa-plus' is clicked on
+
+2019-04-25 09:27:08 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Post name_name"), "test"): Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Post name_name'
+
+2019-04-25 09:27:09 - [MESSAGE][PASSED] - Text 'test' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Post name_name'
+
+2019-04-25 09:27:09 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Post")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Post' is clicked on
+
+2019-04-25 09:27:09 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Post' is clicked on
+
+2019-04-25 09:27:09 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:10 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/create_comment_user" classname="Test Cases/create_comment_user" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:27:10 - [TEST_CASE][PASSED] - Test Cases/create_comment_user: Test Cases/create_comment_user
+
+2019-04-25 09:27:10 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:27:10 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-25 09:27:11 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:27:15 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:27:15 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:16 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:16 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:16 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:16 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "ploucplouc12"): Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:16 - [MESSAGE][PASSED] - Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:16 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:16 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:16 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/td_test edit")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1629")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1629' is clicked on
+
+2019-04-25 09:27:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1629' is clicked on
+
+2019-04-25 09:27:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Comment")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Comment' is clicked on
+
+2019-04-25 09:27:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Comment' is clicked on
+
+2019-04-25 09:27:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:19 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/delete_comment_user" classname="Test Cases/delete_comment_user" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:27:19 - [TEST_CASE][PASSED] - Test Cases/delete_comment_user: Test Cases/delete_comment_user
+
+2019-04-25 09:27:19 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:27:19 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-25 09:27:20 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:27:23 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:27:23 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:24 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:24 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:24 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:24 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "ploucplouc12"): Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:25 - [MESSAGE][PASSED] - Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:25 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:25 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:25 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:25 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:25 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/td_test edit")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:25 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1631")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1631' is clicked on
+
+2019-04-25 09:27:26 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1631' is clicked on
+
+2019-04-25 09:27:26 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/i_Comment_fas fa-trash")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Comment_fas fa-trash' is clicked on
+
+2019-04-25 09:27:26 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_Comment_fas fa-trash' is clicked on
+
+2019-04-25 09:27:26 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:27 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/delete_post_user" classname="Test Cases/delete_post_user" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:27:27 - [TEST_CASE][PASSED] - Test Cases/delete_post_user: Test Cases/delete_post_user
+
+2019-04-25 09:27:27 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:27:27 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-25 09:27:28 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:27:31 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:27:31 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:32 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:32 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:32 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:32 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Spring Boot Thymeleaf/input_Username_username"), "ploucplouc12"): Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:33 - [MESSAGE][PASSED] - Text 'ploucplouc12' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:33 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:33 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:33 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:33 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:33 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/td_test edit")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/td_test edit' is clicked on
+
+2019-04-25 09:27:34 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/i_test_fas fa-trash")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test_fas fa-trash' is clicked on
+
+2019-04-25 09:27:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test_fas fa-trash' is clicked on
+
+2019-04-25 09:27:34 - [TEST_STEP][PASSED] - click(findTestObject("Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/delete_board_modo" classname="Test Cases/delete_board_modo" status="PASSED">
+         <system-out><![CDATA[2019-04-25 09:27:34 - [TEST_CASE][PASSED] - Test Cases/delete_board_modo: Test Cases/delete_board_modo
+
+2019-04-25 09:27:34 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-04-25 09:27:34 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-04-25 09:27:35 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-04-25 09:27:38 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-04-25 09:27:38 - [TEST_STEP][PASSED] - navigateToUrl("http://127.0.0.1:9090/"): Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:39 - [MESSAGE][PASSED] - Navigate to 'http://127.0.0.1:9090/' successfully
+
+2019-04-25 09:27:39 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Login")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:39 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Login' is clicked on
+
+2019-04-25 09:27:39 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Username_username"), "lewislewis"): Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:40 - [MESSAGE][PASSED] - Text 'lewislewis' is set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'
+
+2019-04-25 09:27:40 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/input_Password_password"), "eWrmvIvEgHHUCGRVcsPJcw=="): Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:40 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'
+
+2019-04-25 09:27:40 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/button_Log In")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:40 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/button_Log In' is clicked on
+
+2019-04-25 09:27:40 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Boards")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:40 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Boards' is clicked on
+
+2019-04-25 09:27:40 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/i_test edit_fas fa-trash")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test edit_fas fa-trash' is clicked on
+
+2019-04-25 09:27:40 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/i_test edit_fas fa-trash' is clicked on
+
+2019-04-25 09:27:40 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Spring Boot Thymeleaf/a_Logout")): Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on
+
+2019-04-25 09:27:41 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Spring Boot Thymeleaf/a_Logout' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-04-25 09:26:32 - [TEST_SUITE][PASSED] - full_test: Test Cases/delete_board_modo]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

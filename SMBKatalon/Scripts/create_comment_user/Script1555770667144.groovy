@@ -17,21 +17,23 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://127.0.0.1:9090/')
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Login'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/a_Login'))
 
-WebUI.setText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Username_username'), 'ploucplouc12')
+WebUI.setText(findTestObject('Page_Spring Boot Thymeleaf/input_Username_username'), 'ploucplouc12')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_Password_password'), 'eWrmvIvEgHHUCGRVcsPJcw==')
+WebUI.setEncryptedText(findTestObject('Page_Spring Boot Thymeleaf/input_Password_password'), 'eWrmvIvEgHHUCGRVcsPJcw==')
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/button_Log In'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/button_Log In'), FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Boards'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/a_Boards'))
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/td_test edit'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/td_test edit'))
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/td_20 avril 2019 1629'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/td_test'))
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/button_Comment'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/button_Comment'))
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Logout'))
+WebUI.click(findTestObject('Page_Spring Boot Thymeleaf/a_Logout'))
+
+WebUI.closeBrowser()
 
